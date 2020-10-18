@@ -1,6 +1,5 @@
 from django.test import TestCase
 import requests
-import unittest
 
 
 class TestOpenFoodFacts(TestCase):
@@ -8,8 +7,20 @@ class TestOpenFoodFacts(TestCase):
         r = requests.get('https://fr.openfoodfacts.org/cgi/search.pl?search_simple=1')
         self.assertEqual(r.status_code, 200)
 
-    def test_download_static(self):
+    def test_download_stores(self):
+        r = requests.get('https://fr.openfoodfacts.org/stores.json')
+        stores = r.json()
+        self.assertEqual(r.status_code, 200)
+        self.assertFalse(stores.get("count") < 3000)
+
+    def test_download_categories(self):
+        r = requests.get('https://fr.openfoodfacts.org/categories.json')
+        categories = r.json()
+        self.assertEqual(r.status_code, 200)
+        self.assertFalse(categories.get("count") < 15000)
+
+    def test_download_products_set(self):
         pass
 
-    def test_download_items(self):
+    def clean_data(self):
         pass
