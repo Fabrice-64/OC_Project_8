@@ -7,6 +7,9 @@ class CustomerTestCase(LiveServerTestCase):
         self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(2)
 
+    def tearDown(self):
+        self.browser.quit()
+
     def test_customer_selects_better_product(self):
         """
         Test the User story with an optimal scenario
@@ -96,6 +99,15 @@ class CustomerTestCase(LiveServerTestCase):
         # And its ingredients
 
         # She then can close this dialog box
+
+
+class SuperUserTestCase(LiveServerTestCase):
+    def setUp(self):
+        self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(2)
+
+    def tearDown(self):
+        self.browser.quit()
 
     def test_superuser_functionality(self):
         """
