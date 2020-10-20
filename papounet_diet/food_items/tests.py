@@ -1,4 +1,5 @@
 from django.test import TestCase
+from unittest.mock import patch
 import requests
 
 
@@ -7,6 +8,7 @@ class TestOpenFoodFacts(TestCase):
         r = requests.get('https://fr.openfoodfacts.org/cgi/search.pl?search_simple=1')
         self.assertEqual(r.status_code, 200)
 
+    @patch('requests.get',)
     def test_download_stores(self):
         r = requests.get('https://fr.openfoodfacts.org/stores.json')
         stores = r.json()
@@ -22,5 +24,5 @@ class TestOpenFoodFacts(TestCase):
     def test_download_products_set(self):
         pass
 
-    def clean_data(self):
+    def test_clean_data(self):
         pass
