@@ -14,10 +14,27 @@ class CustomerTestCase(LiveServerTestCase):
         """
         Test the User story with an optimal scenario
         """
-        self.fail('Test Incomplete... still a lot to learn')
-
-        # As a member, Lily Kala authenticates herself upon opening the Website
+        brand_element = self.browser.find_element_by_class_name('brand')
+        self.assertEqual('Pur Beurre', brand_element.text)
+        image = self.browser.find_element_by_tag_name('img')
+        self.assertContains('corporate_picture', image)
+        logo_brand = self.browser.find_element_by_name('logo')
+        self.assertEqual('logo_pur_beurre', logo_brand)
+        heading1 = self.browser.find_element_by_tag_name('h1')
+        self.assertContains('Bienvenue', heading1)
+        heading2 = self.browser.find_element_by_tag_name('h2')
+        self.assertContains('Colette', heading1)
         # The interface offers the possibility to log in
+        login = self.browser.find_element_by_name('login')
+        self.assertEqual('login', login)
+        phone = self.browser.find_element_by_name('phone')
+        self.assertEqual('phone', phone)
+        e_mail = self.browser.find_element_by_name('e_mail')
+        self.assertEqual('e_mail', e_mail)
+        legal_notice = self.browser.find_element_by_link_text('Mentions légales')
+        self.assertContains('Mentions légales', legal_notice)
+        contact = self.browser.find_element_by_link_text('Contact')
+        self.assertContains('Contact', contact)
         # Lily Kala types in her username
         # Then, she types in her password
         # Both are checked in the database
@@ -27,9 +44,11 @@ class CustomerTestCase(LiveServerTestCase):
 
         # Then she enters the name of a certain product
         # in a dedicated input box
-
+        search_field = self.browser.find_element_by_name('search_field')
+        self.assertEqual('search_field', search_field)
         # Then she validates
-
+        validate_btn = self.browser.find_element_by_name('validate')
+        self.assertEqual('validate', validate_btn)
         # LK is informed that no product was found
         # The input field is initialized
         # LK is invited to input another product name
@@ -48,6 +67,9 @@ class CustomerTestCase(LiveServerTestCase):
         # Lily Kala is then offered to record the product
         # Lily Kala is informed that the product has been recorded
         # Then Lily Kala can close this box.
+        logout = self.browser.find_element_by_name('logout')
+        self.assertEqual('logout', logout)
+        self.fail('Test Incomplete... still a lot to learn')
 
     def test_customer_gets_registered(self):
         """
@@ -77,7 +99,6 @@ class CustomerTestCase(LiveServerTestCase):
         """
         Test the User story with an optimal scenario
         """
-        self.fail('Test Incomplete... still a lot to learn')
 
         # As a registered customer Lily Kala requests authentication
         # A dialog box pops up in the middle of the page
@@ -86,6 +107,9 @@ class CustomerTestCase(LiveServerTestCase):
         # If correct, she is informed that she is logged
 
         # The the interface offers LK to retrieve a former search
+        favorites_btn = self.browser.find_element_by_name('favorites')
+        self.assertEqual('favorites', favorites_btn)
+
         # LK validates this option
         # The recorded products are displayed.
         # The 6 last recorded products are displayed
@@ -99,6 +123,7 @@ class CustomerTestCase(LiveServerTestCase):
         # And its ingredients
 
         # She then can close this dialog box
+        self.fail('Test Incomplete... still a lot to learn')
 
 
 class SuperUserTestCase(LiveServerTestCase):
