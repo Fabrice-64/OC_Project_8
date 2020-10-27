@@ -8,8 +8,8 @@ def registration(request):
 
 
 def home(request):
-    return HttpResponse("Hello. Page home de customer")
+    return render(request, 'customer/home.html/')
 
 
 def login(request):
-    return HttpResponse("Hello. page login de customer")
+    return render(request, 'customer/login.html/')
