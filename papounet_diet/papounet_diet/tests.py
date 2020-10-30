@@ -15,10 +15,21 @@ class CustomerTestCase(LiveServerTestCase):
         cls.browser.quit()
         super().tearDownClass()
 
-    def test_home_page(self):
+    def test_quickly_find_product_from_home_page(self):
         """
-        Test the User story with an optimal scenario
+        Test the User story where the persona wants to look for a product
+        without logging in
         """
         self.browser.get('%s%s' % (self.live_server_url, ''))
+        self.assertIsNotNone(self.browser.find_element_by_css_selector(
+            "link#favicon"))
+        # First of all, Lily Kala has a look at the page
+        # At the top, she can see a navigation bar displaying:
+        # The company logo
+        # The company name
         brand_element = self.browser.find_element_by_class_name('brand')
-        self.assertEqual('test', brand_element.text)
+        self.assertEqual('Pur Beurre', brand_element.text)
+
+        self.fail("Test Incomplet")
+
+
