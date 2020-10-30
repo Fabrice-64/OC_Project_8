@@ -2,12 +2,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="icon" href="{% static 'face_co.png' %}" id="favicon"/>
+        <link rel="icon" href="{% static 'icons/face_co.png' %}" id="favicon"/>
         <meta charset="utf-8"/>
         <title>Papounet_diet</title>
     </head>
 
     <body>
-        <a class="brand">Pur Beurre</a>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <img src="{% static 'icons/logo_pur_beurre' %}" id="company_logo" alt="logo pur beurre"/>
+                <a class="brand">Pur Beurre</a>
+                <ul class="nav">
+                    <li><a href="#">
+                        <img src="{% static 'icons/login' %}" id="login" alt="login">
+                    </a></li>
+                    <li><a href="#">
+                        <img src="{% static 'icons/carrot' %}" id="carrot" alt="carrot">
+                    </a></li>
+                    <li><a href="#">
+                        <img src="{% static 'icons/logout' %}" id="logout" alt="logout">
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        <
     </body>
 </html>

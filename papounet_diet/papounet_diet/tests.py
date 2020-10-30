@@ -21,15 +21,26 @@ class CustomerTestCase(LiveServerTestCase):
         without logging in
         """
         self.browser.get('%s%s' % (self.live_server_url, ''))
-        self.assertIsNotNone(self.browser.find_element_by_css_selector(
-            "link#favicon"))
+        self.assertIsNotNone(self.browser.find_element_by_id(
+            "favicon"))
         # First of all, Lily Kala has a look at the page
         # At the top, she can see a navigation bar displaying:
         # The company logo
+        self.assertIsNotNone(self.browser.find_element_by_id(
+            "company_logo"))
         # The company name
         brand_element = self.browser.find_element_by_class_name('brand')
         self.assertEqual('Pur Beurre', brand_element.text)
-
+        # The possibility to log in
+        self.assertIsNotNone(self.browser.find_element_by_id(
+            "login"))
+        # To retrieve recorded products
+        self.assertIsNotNone(self.browser.find_element_by_id(
+            "carrot"))
+        # To log off
+        self.assertIsNotNone(self.browser.find_element_by_id(
+            "logout"))
+        
         self.fail("Test Incomplet")
 
 
