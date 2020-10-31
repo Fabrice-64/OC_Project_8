@@ -40,7 +40,12 @@ class CustomerTestCase(LiveServerTestCase):
         # To log off
         self.assertIsNotNone(self.browser.find_element_by_id(
             "logout"))
-        
+        # A field to search for an item
+        customer_input = self.browser.find_element_by_css_selector(
+            'input#customer_input')
+        self.assertEqual(customer_input.get_attribute(
+            'placeholder'), 'Recherche')
+
         self.fail("Test Incomplet")
 
 

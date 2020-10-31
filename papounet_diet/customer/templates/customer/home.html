@@ -8,11 +8,16 @@
     </head>
 
     <body>
-        <div class="navbar">
+        <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <img src="{% static 'icons/logo_pur_beurre' %}" id="company_logo" alt="logo pur beurre"/>
                 <a class="brand">Pur Beurre</a>
                 <ul class="nav">
+                    <li>
+                        <form class="navbar-form pull-right">
+                            <input type="text" class="span2" id = "customer_input" placeholder="Recherche">
+                            <button type="submit" class="btn">Valider</button>
+                        </form></li>
                     <li><a href="#">
                         <img src="{% static 'icons/login' %}" id="login" alt="login">
                     </a></li>
@@ -25,6 +30,9 @@
                 </ul>
             </div>
         </div>
-        <
+
+        <div class="navbar navbar-fixed-bottom">
+            
+        </div>
     </body>
 </html>
