@@ -45,6 +45,28 @@ class CustomerTestCase(LiveServerTestCase):
             'input#customer_input')
         self.assertEqual(customer_input.get_attribute(
             'placeholder'), 'Recherche')
+        # In the upper half of the page, a picture
+        self.assertIsNotNone(self.browser.find_element_by_css_selector(
+            'img#background_picture'))
+        # Contains a piece of advice
+        motto = self.assertIs(self.browser.find_element_by_css_selector(
+            'h1#motto'))
+        # and a search field and a validation button.
+        self.assertContains(motto.text, "Pur Beurre, la qualité")
+        # Just below Lily Kala can see the story of the company
+
+        # With the pictures of Colette and Remy
+
+        # Still below LK sees an invite to contact the company
+
+        # Per telephone
+
+        # Or per e-mail
+
+        # At the bottom of the page, she can find the terms of reference
+        self.assertIsNotNone(self.browser.find_element_by_css_selector(
+            'a#terms_of_use'))
+        self.assertIsNotNone(self.browser.find_element_by_css_selector('a#contact'))
 
         self.fail("Test Incomplet")
 
