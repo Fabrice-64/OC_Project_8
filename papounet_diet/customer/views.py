@@ -8,8 +8,8 @@ def registration(request):
 
 
 def home(request):
-    return render(request, 'customer/home.html/')
+    return render(request, 'customer/home.html')
 
 
 def login(request):
-    return render(request, 'customer/login.html/')
+    return render(request, 'customer/login.html')

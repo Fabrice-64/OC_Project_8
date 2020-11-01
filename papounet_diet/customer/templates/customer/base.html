@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="{% static 'icons/logo_pur_beurre-favicon.png' %}" id="favicon"/>
+        <meta charset="utf-8"/>
+        <title>Papounet_diet</title>
+    </head>
+
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <img src="{% static 'pictures/logo_pur_beurre.png' %}" id="company_logo" alt="logo pur beurre"/>
+                <a class="brand">Pur Beurre</a>
+                <ul class="nav">
+                    <li>
+                        <form class="navbar-form pull-right">
+                            <input type="text" class="span2" id = "customer_input" placeholder="Recherche">
+                            <button type="submit" class="btn">Valider</button>
+                        </form></li>
+                    <li><a href="#">
+                        <img src="{% static 'icons/login.png' %}" id="login" alt="login">
+                    </a></li>
+                    <li><a href="#">
+                        <img src="{% static 'icons/carrot.png' %}" id="carrot" alt="carrot">
+                    </a></li>
+                    <li><a href="#">
+                        <img src="{% static 'icons/logout.png' %}" id="logout" alt="logout">
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        {% block content %}
+        {% endblock %}
+        <div class="navbar navbar-fixed-bottom">
+            <a href="#" id="terms_of_use">Mentions Légales</a>
+            <a href="#" id="contact">Contact</a>
+        </div>
+    </body>
+</html>
