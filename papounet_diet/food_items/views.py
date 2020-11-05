@@ -1,12 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader
 
 # Create your views here.
 
 
-def product_details(request):
-    return HttpResponse("Hello, page product_details de food_items")
+def product_details(request, product_name):
+    context = {'product_name': product_name}
+    return render(request, "food_items/detailed_product.html", context)
 
 
 def search_results(request):
-    return HttpResponse("Hello, page search_results de food_items")
+    searched_item = request.POST['searched_item']
+    answer = ["XX", "YY", "ZZ"]
+    context = {'test_answer': answer, 'searched_item': searched_item}
+    return render(request, "food_items/search_results.html", context)

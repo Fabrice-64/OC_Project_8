@@ -21,33 +21,27 @@ class CustomerTestCase(LiveServerTestCase):
         without logging in
         """
         self.browser.get('%s%s' % (self.live_server_url, ''))
-        self.assertIsNotNone(self.browser.find_element_by_id(
-            "favicon"))
+        self.browser.find_element_by_id("favicon")
         # First of all, Lily Kala has a look at the page
         # At the top, she can see a navigation bar displaying:
         # The company logo
-        self.assertIsNotNone(self.browser.find_element_by_id(
-            "company_logo"))
+        self.browser.find_element_by_id("company_logo")
         # The company name
         brand_element = self.browser.find_element_by_class_name('brand')
         self.assertEqual('Pur Beurre', brand_element.text)
         # The possibility to log in
-        self.assertIsNotNone(self.browser.find_element_by_id(
-            "login"))
+        self.browser.find_element_by_id("login")
         # To retrieve recorded products
-        self.assertIsNotNone(self.browser.find_element_by_id(
-            "carrot"))
+        self.browser.find_element_by_id("carrot")
         # To log off
-        self.assertIsNotNone(self.browser.find_element_by_id(
-            "logout"))
+        self.browser.find_element_by_id("logout")
         # A field to search for an item
         customer_input = self.browser.find_element_by_css_selector(
             'input#customer_input')
         self.assertEqual(customer_input.get_attribute(
             'placeholder'), 'Recherche')
         # In the upper half of the page, a picture
-        self.assertIsNotNone(self.browser.find_element_by_css_selector(
-            'img#background_picture'))
+        self.browser.find_element_by_css_selector('img#background_picture')
         # Contains the motto and a piece of advice
         self.browser.find_element_by_css_selector('h1#motto')
         self.browser.find_element_by_css_selector('h2#advice')
@@ -56,28 +50,19 @@ class CustomerTestCase(LiveServerTestCase):
         self.browser.find_element_by_css_selector('h2#heroes')
         self.browser.find_element_by_css_selector('p#story')
         # With the pictures of Colette and Remy
-        self.assertIsNotNone(self.browser.find_element_by_css_selector(
-            'img#Colette'))
-        self.assertIsNotNone(self.browser.find_element_by_css_selector(
-            'img#Remy'))
+        self.browser.find_element_by_css_selector('img#Colette')
+        self.browser.find_element_by_css_selector('img#Remy')
         # Still below LK sees an invite to contact the company
-        self.browser.find_element_by_css_selector(
-            'h2#call_to_action')
+        self.browser.find_element_by_css_selector('h2#call_to_action')
         # Per telephone
-        self.assertIsNotNone(self.browser.find_element_by_css_selector(
-            'img#telephone'))
-        self.assertIsNotNone(self.browser.find_element_by_css_selector(
-            'p#phone_number'))
+        self.browser.find_element_by_css_selector('img#telephone')
+        self.browser.find_element_by_css_selector('p#phone_number')
         # Or per e-mail
-        self.assertIsNotNone(self.browser.find_element_by_css_selector(
-            'img#e_mail'))
-        self.assertIsNotNone(self.browser.find_element_by_css_selector(
-            'p#e_mail'))
+        self.browser.find_element_by_css_selector(
+            'img#e_mail')
+        self.browser.find_element_by_css_selector('p#e_mail')
         # At the bottom of the page, she can find the terms of reference
-        self.assertIsNotNone(self.browser.find_element_by_css_selector(
-            'a#terms_of_use'))
-        self.assertIsNotNone(self.browser.find_element_by_css_selector(
-            'a#contact'))
+        self.browser.find_element_by_css_selector('a#terms_of_use')
         # Then she enters the name of a certain product
         # in a dedicated input box either at the top and validate
         customer_input.send_keys('Nutella')
@@ -89,13 +74,17 @@ class CustomerTestCase(LiveServerTestCase):
             'input#main_customer_input')
         self.assertEqual(main_customer_input.get_attribute(
             'placeholder'), 'Recherche')
-        main_customer_input.send_keys('Confiture')
+        main_customer_input.send_keys('No Question')
         self.browser.find_element_by_id('main_button').click()
         # LK is informed that no product was found
         # The input field is initialized
         # LK is invited to input another product name
+        main_customer_input.send_keys('Nutella')
         # And she can validate the search
+        self.browser.find_element_by_id('main_button').click()
         # Then a list of max 6 comparable products
+        search_results = self.browser.find_elements_by_css_selector('form#search_results')
+        self.assertGreaterEqual(len(search_results), 1)
         # with an equivalent or better nutrition grade is displayed
         # The name of the product can be seen below the picture
         # LK selects a product to get some details
@@ -107,7 +96,7 @@ class CustomerTestCase(LiveServerTestCase):
         # LK processes the registration as a new user (See other User Story)
         # She is informed that she is a registered user
         # And she can record the product.
-        
+
         self.fail("Test Incomplet")
 
 

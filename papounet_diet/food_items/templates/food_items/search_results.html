@@ -1,0 +1,7 @@
+This are the search results : {{ searched_item }}
+
+<ul>
+    {% for answer in test_answer %}
+    <li><a href="/food_items/product_details/{{ answer }}/">{{ answer }}</a></li>
+    {% endfor %}
+</ul>
