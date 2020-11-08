@@ -1,3 +1,7 @@
+{% extends '../customer/base.html'%}
+
+{% block content %}
+
 This are the search results : {{ searched_item }}
 
 <ul>
@@ -5,3 +9,5 @@ This are the search results : {{ searched_item }}
     <li><a href="/food_items/product_details/{{ answer }}/">{{ answer }}</a></li>
     {% endfor %}
 </ul>
+
+{% endblock %}
