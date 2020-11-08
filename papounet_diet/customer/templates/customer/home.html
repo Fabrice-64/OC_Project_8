@@ -1,8 +1,10 @@
+{% extends './base.html' %}
 
-
-
+{% block content %}
 <html>
 Page d'accueil
+
+
 <form action="{% url 'food_items:searched_item' %}" method='post'>
 {% csrf_token %}
 
@@ -10,6 +12,6 @@ Page d'accueil
 <input type="submit">
 
 </form>
-
+{% endblock %}
 
 </html>

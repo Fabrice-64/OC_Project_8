@@ -6,10 +6,15 @@ from django.http import HttpResponse
 # Create your views here.
 
 def home(request):
-    return render(request, 'customer/home.html')
+    return render(request, "customer/home.html")
 
-def registration(request):
-    return HttpResponse("Page Registration")
+def register(request):
+    return render(request, "customer/register.html")
 
 def login(request):
-    return HttpResponse('Page Login')
+    return render(request, "customer/login.html")
+
+def logout(request):
+    return render(request, "customer/logout.html")
+
+

@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <ul class="nav">
+        <li>
+            <a href="{% url 'customer:login' %}">Login</a>
+            <a href="{% url 'customer:logout' %}">Logout</a>
+            <a href="{% url 'customer:register' %}">Register</a>
+            <a href="{% url 'food_items:favorites' %}">Favorites</a>
+        </li>
+    </ul>
+
+{% block content %} {% endblock %}
+</html>

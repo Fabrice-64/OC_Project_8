@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.urls import reverse
 
 # Create your views here.
 
@@ -15,3 +16,6 @@ def search_results(request):
     answer = ["XX", "YY", "ZZ"]
     context = {'test_answer': answer, 'searched_item': searched_item}
     return render(request, "food_items/search_results.html", context)
+
+def favorites(request):
+    return render(request, "food_items/favorites.html")
