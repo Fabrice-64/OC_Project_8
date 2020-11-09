@@ -8,7 +8,7 @@ from django.urls import reverse
 
 def product_details(request, product_name):
     context = {'product_name': product_name}
-    return render(request, "food_items/detailed_product.html", context)
+    return render(request, "food_items/product_details.html", context)
 
 
 def search_results(request):

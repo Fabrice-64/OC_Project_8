@@ -27,7 +27,7 @@ class CustomerTestCase(LiveServerTestCase):
         # The company logo
         self.browser.find_element_by_id("company_logo")
         # The company name
-        brand_element = self.browser.find_element_by_class_name('brand')
+        brand_element = self.browser.find_element_by_class_name('navbar-brand')
         self.assertEqual('Pur Beurre', brand_element.text)
         # The possibility to log in
         self.browser.find_element_by_id("login")
@@ -36,10 +36,10 @@ class CustomerTestCase(LiveServerTestCase):
         # To log off
         self.browser.find_element_by_id("logout")
         # A field to search for an item
-        customer_input = self.browser.find_element_by_css_selector(
-            'input#customer_input')
+        customer_input = self.browser.find_element_by_name(
+            'searched_item')
         self.assertEqual(customer_input.get_attribute(
-            'placeholder'), 'Recherche')
+            'placeholder'), 'Votre Recherche')
         # In the upper half of the page, a picture
         self.browser.find_element_by_css_selector('img#background_picture')
         # Contains the motto and a piece of advice
@@ -69,22 +69,14 @@ class CustomerTestCase(LiveServerTestCase):
         self.browser.find_element_by_id('top_button').click()
         # Or in the middle of the page
         # Then she validates
-        self.browser.refresh()
-        main_customer_input = self.browser.find_element_by_css_selector(
-            'input#main_customer_input')
-        self.assertEqual(main_customer_input.get_attribute(
-            'placeholder'), 'Recherche')
-        main_customer_input.send_keys('No Question')
-        self.browser.find_element_by_id('main_button').click()
+        # A new window opens
+        self.browser.switch_to_window('search_results')
         # LK is informed that no product was found
+        self.browser.find_element_by_id('error_message')
         # The input field is initialized
         # LK is invited to input another product name
-        main_customer_input.send_keys('Nutella')
         # And she can validate the search
-        self.browser.find_element_by_id('main_button').click()
         # Then a list of max 6 comparable products
-        search_results = self.browser.find_elements_by_css_selector('form#search_results')
-        self.assertGreaterEqual(len(search_results), 1)
         # with an equivalent or better nutrition grade is displayed
         # The name of the product can be seen below the picture
         # LK selects a product to get some details

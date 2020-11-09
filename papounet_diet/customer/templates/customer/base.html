@@ -20,10 +20,22 @@
                             <img class="nav-link px-2" src="{% static 'icons/carrot.png' %}" id="carrot" alt="carrot" height="40em" width="40em"></a></li>
                     </li>
                 </ul>
+                <form action="{% url 'food_items:searched_item' %}" method='post' target="search_results">
+                    {% csrf_token %}
+                    <input type="text" name="searched_item" id="searched_item" placeholder="Votre Recherche">
+                    <input type="submit" id="top_button">
+                    </form>
             </div>
         </div>
 
-    {% block content %} {% endblock %}
+    {% block content %} 
+    {% endblock %}
+
+    <div class="navbar navbar-fixed-bottom">
+        <a href="#" id="terms_of_use">Mentions Légales</a>
+        <a href="#" id="contact">Contact</a>
+    </div>
+
 </body>
 
 </html>
