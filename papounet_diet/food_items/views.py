@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.template import loader
 from django.urls import reverse
 
+from .models import Product
+
 # Create your views here.
 
 
@@ -13,8 +15,8 @@ def product_details(request, product_name):
 
 def search_results(request):
     searched_item = request.POST['searched_item']
-    answer = ["XX", "YY", "ZZ"]
-    context = {'test_answer': answer, 'searched_item': searched_item}
+    results = Product.objects.filter(name__contains=searched_item)
+    context = {'search_results': results, 'searched_item': searched_item}
     return render(request, "food_items/search_results.html", context)
 
 def favorites(request):

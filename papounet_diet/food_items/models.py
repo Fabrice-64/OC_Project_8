@@ -2,6 +2,20 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=560)
+
+    def __str__(self):
+        return self.name
+
+
+class Store(models.Model):
+    name = models.CharField(max_length=280)
+
+    def __str__(self):
+        return self.name
+
+
 class Product(models.Model):
     code = models.CharField(max_length=14, unique=True)
     brand = models.CharField(max_length=400)
@@ -13,25 +27,11 @@ class Product(models.Model):
     sugars_100g = models.IntegerField()
     fat_100g = models.IntegerField()
     selection = models.ManyToManyField(User, through='BestProductSelection')
+    stores = models.ManyToManyField(Store)
+    categories = models.ManyToManyField(Category)
 
     def __str__(self):
         return self.code
-
-
-class Store(models.Model):
-    name = models.CharField(max_length=280)
-    products = models.ManyToManyField(Product)
-
-    def __str__(self):
-        return self.name
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=560)
-    products = models.ManyToManyField(Product)
-
-    def __str__(self):
-        return self.name
 
 
 class BestProductSelection(models.Model):

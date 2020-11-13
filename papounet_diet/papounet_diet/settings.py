@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'customer.apps.CustomerConfig',
-    'e_mailing.apps.EMailingConfig',
     'food_items.apps.FoodItemsConfig',
 ]
 
