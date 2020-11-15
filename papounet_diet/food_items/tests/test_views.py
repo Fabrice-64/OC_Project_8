@@ -25,11 +25,13 @@ class SimpleTest(TestCase):
                                )
     def test_product_details(self):
         client = Client()
-        response = client.get('/food_items/product_details/test/')
-        self.assertTemplateUsed('food_items/product_details.html')
+        response = client.get('/food_items/product_details/01234567891011/')
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed('food_items/product_details.html')
+        product = Product.objects.get(name="Nutella Allégé")
+        self.assertEqual(product.nutrition_score, "E")
 
-    def test_searched_item(self):
+    def test_searched_results(self):
         client = Client()
         response = client.post('/food_items/searched_item/', {'searched_item': 'test'})
         self.assertTemplateUsed('food_items/search_results.html')

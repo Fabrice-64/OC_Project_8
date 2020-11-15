@@ -1,8 +1,11 @@
-from django.test import LiveServerTestCase
+from django.test import LiveServerTestCase, TestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class CustomerTestCase(LiveServerTestCase):
+    fixtures = ['product']
+    
     
     @classmethod
     def setUpClass(cls):
@@ -15,7 +18,7 @@ class CustomerTestCase(LiveServerTestCase):
         cls.browser.quit()
         super().tearDownClass()
 
-    def test_quickly_find_product_from_home_page(self):
+    def test_get_product_from_home_page(self):
         """
         Test the User story where the persona wants to look for a product
         without logging in
@@ -65,22 +68,37 @@ class CustomerTestCase(LiveServerTestCase):
         self.browser.find_element_by_css_selector('a#terms_of_use')
         # Then she enters the name of a certain product
         # in a dedicated input box either at the top and validate
-        customer_input.send_keys('Nutella')
+        customer_input.send_keys('No Product')
         self.browser.find_element_by_id('top_button').click()
         # Or in the middle of the page
         # Then she validates
         # A new window opens
-        self.browser.switch_to_window('search_results')
         # LK is informed that no product was found
-        self.browser.find_element_by_id('error_message')
+        self.browser.find_element_by_tag_name('h2')
         # The input field is initialized
         # LK is invited to input another product name
+  
+        customer_input = self.browser.find_element_by_name(
+            'searched_item')
+        customer_input.clear()
+        customer_input.send_keys('Nutella')
         # And she can validate the search
+        self.browser.find_element_by_id('top_button').click()
         # Then a list of max 6 comparable products
+        self.browser.switch_to_window("search_results")
+        elements = self.browser.find_elements_by_id("search_results")
+        assert len(elements) > 0
         # with an equivalent or better nutrition grade is displayed
         # The name of the product can be seen below the picture
+        self.browser.find_element_by_id("01234567891011")
         # LK selects a product to get some details
+        self.browser.find_element_by_id("01234567891011").click()
         # A new window opens, showing the details
+        WebDriverWait(self.browser, 10)
+        self.browser.find_element_by_class_name('card')
+        self.browser.find_element_by_css_selector('li#product_name')
+        print(self.browser.page_source)
+        """
         # LK is proposed to record her search for a later use
         # If no, she gets back to the home page
         # If yes, she can start the registering process
@@ -88,7 +106,7 @@ class CustomerTestCase(LiveServerTestCase):
         # LK processes the registration as a new user (See other User Story)
         # She is informed that she is a registered user
         # And she can record the product.
-
+        """
         self.fail("Test Incomplet")
 
 

@@ -3,6 +3,22 @@
 {% block content %}
 
 Page pour detailed_product : 
-{{ product_name }}
+{{ product }}
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="#" alt="Card Image Cap">
+    <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <ul class="list-group">
+            <li class="list-group-item">{{ product.brand }}</li>
+            <li class="list-group-item">{{ product.stores }}</li>
+            <li class="list-group-item">{{ product.nutrition_score }}</li>
+        </ul>
+    <div class="card-body">
+        <a href="#" class="card-link"> Enregistrer</a>
+        <a href="#" class="card-link"> Fermer</a>
+    </div>
+    </div>
+</div>
+
 
 {% endblock %}
