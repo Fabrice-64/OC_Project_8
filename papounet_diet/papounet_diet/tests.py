@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 class CustomerTestCase(LiveServerTestCase):
-    fixtures = ['product']
+    fixtures = ['product', 'store']
     
     
     @classmethod
@@ -69,15 +69,14 @@ class CustomerTestCase(LiveServerTestCase):
         # Then she enters the name of a certain product
         # in a dedicated input box either at the top and validate
         customer_input.send_keys('No Product')
-        self.browser.find_element_by_id('top_button').click()
-        # Or in the middle of the page
+         # Or in the middle of the page
         # Then she validates
+        self.browser.find_element_by_id('top_button').click()
         # A new window opens
         # LK is informed that no product was found
         self.browser.find_element_by_tag_name('h2')
         # The input field is initialized
         # LK is invited to input another product name
-  
         customer_input = self.browser.find_element_by_name(
             'searched_item')
         customer_input.clear()
@@ -97,9 +96,9 @@ class CustomerTestCase(LiveServerTestCase):
         WebDriverWait(self.browser, 10)
         self.browser.find_element_by_class_name('card')
         self.browser.find_element_by_css_selector('li#product_name')
+        # LK is proposed to record her search for a later use
         print(self.browser.page_source)
         """
-        # LK is proposed to record her search for a later use
         # If no, she gets back to the home page
         # If yes, she can start the registering process
         # The register page opens
