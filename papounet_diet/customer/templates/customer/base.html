@@ -25,6 +25,11 @@
                     <input type="text" name="searched_item" id="searched_item" placeholder="Votre Recherche">
                     <input type="submit" id="top_button">
                     </form>
+                {% if request.user.is_authenticated %}
+                <p> OK </p>
+                {% else %}
+                <p> NOK</p>
+                {% endif %}
             </div>
         </div>
 

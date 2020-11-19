@@ -1,9 +1,9 @@
-{% extends './base.html' %}
+{% extends '../customer/base.html' %}
 {% block title %}Logged Out {% endblock %}
 
 {% block content %}
 <p>
 Vous êtes sur la page logout dans le module customer
-Pour se <a href="{% url 'login' %}"> Log in</a>"
+Pour se <a href="{% url 'customer:login' %}"> Log in</a>"
 </p>
 {% endblock %}

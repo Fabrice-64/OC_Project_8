@@ -25,7 +25,7 @@ def user_login(request):
 
     return render(request, "customer/login.html", {'form': form})
 
-def logout(request):
+def user_logout(request):
     return render(request, "customer/logout.html")
 
 
