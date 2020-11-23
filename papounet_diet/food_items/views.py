@@ -1,5 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic import ListView
+from .models import Product, BestProductSelection
+"""
+class ProductList(ListView):
+    model = Product
+"""
+
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 
@@ -15,17 +22,18 @@ def product_details(request, product_code):
 
 
 def search_results(request):
-    searched_item = request.POST['searched_item']
+    searched_item = request.GET['searched_item']
     results = Product.objects.filter(name__contains=searched_item).order_by("nutrition_score")[:6]
     context = {'search_results': results, 'searched_item': searched_item}
     return render(request, "food_items/search_results.html", context)
 
 def record_product(request):
     product_to_record = request.POST['product_to_record']
-
     return render(request, "food_items/record_product.html")
 
 def favorites(request):
     return render(request, "food_items/favorites.html")
 
+def essai(request):
 
+    return redirect('food_items:search_results')

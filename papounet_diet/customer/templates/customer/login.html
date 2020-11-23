@@ -5,18 +5,18 @@
   <h1>Log-in</h1>
   {% if form.errors %}
     <p>
-      Your username and password didn't match pas du tout !
-      Please try again.
+      Vos identifiants n'ont pas été reconnus !
+      Essayez à nouveau.
     </p>
   {% else %}
-    <p>Please, use the following form to log-in:</p>
+    <p>Vous pouvez entrer ici vos identifiants :</p>
   {% endif %}
   <div class="login-form">
     <form action="{% url 'customer:login' %}" method="post">
       {{ form.as_p }}
       {% csrf_token %}
       <input type="hidden" name="next" value="{{ next }}" />
-      <p><input type="submit" value="Log-in"></p>
+      <p><input type="submit" value="Validez"></p>
     </form>
 </div>
 {% endblock %}

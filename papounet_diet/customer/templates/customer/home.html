@@ -1,7 +1,7 @@
 {% extends './base.html' %}
 {% load static %}
 
-
+{% block title %} Accueil {% endblock %}
 
 {% block content %}
 <div class="card">
@@ -10,7 +10,7 @@
         <h1 class="card-title" id="motto">Pur Beurre, la Qualité près de chez vous</h1>
         <h2 class="card-text" id="advice">Trouvez votre produit de substitution : 
             Entrez le nom du produit référence ci-dessous</h2>
-            <form action="{% url 'food_items:searched_item' %}" method='post'>
+            <form action="{% url 'food_items:search_results' %}" method='post'>
                 {% csrf_token %}
                 
                 <input type="text" name="searched_item" id="searched_item" placeholder="Votre recherche">

@@ -1,7 +1,13 @@
-{% extends './base.html'}
+{% extends './base.html' %}
+
+{% block title %}  Création de Compte {% endblock %}
 
 {% block content %}
-Vous êtes sur la page register, dans le module customer
-
+<h1> Création d'un compte utilisateur </h1>
+<form method="post">
+    {{ user_form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="Créer mon Compte"></p>
+</form>
 
 {% endblock %}

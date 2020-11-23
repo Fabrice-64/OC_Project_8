@@ -3,33 +3,36 @@
 <html lang="fr">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="{% static 'icons/logo_pur_beurre-favicon.png' %}" id="favicon"/>
+        <link rel="icon" href="{% static 'icons/logo_pur_beurre_favicon.png' %}" id="favicon"/>
         <link rel="stylesheet" href="{% static 'pur-beurre-style-guide/css/bootstrap.min.css' %}">
-    {% block title %}{% endblock %}
+        <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
             <img src="{% static 'pictures/logo_pur_beurre.png' %}" id="company_logo" alt="logo pur beurre" height="40em" width="40em"/>
                 <a class="navbar-brand">Pur Beurre</a>
                 <ul class="navbar-nav">
-                    <li><a href="{% url 'customer:login' %}">   
-                        <img class="img-thumbnail" src="{% static 'icons/login.png' %}" id="login" alt="login" height="40em" width="40em"></a></li>
-                    <li><a href="{% url 'customer:logout' %}"> 
-                            <img class="nav-link px-2" src="{% static 'icons/logout.png' %}" id="logout" alt="logout" height="40em" width="40em"></a></li>
-                    <li><a href="{% url 'food_items:favorites' %}">
-                            <img class="nav-link px-2" src="{% static 'icons/carrot.png' %}" id="carrot" alt="carrot" height="40em" width="40em"></a></li>
-                    </li>
+                    {% if request.user.is_authenticated %}
+                        <p> Bonjour {{ request.user.first_name }}</p>
+                        <li><a href="{% url 'customer:logout' %}"> 
+                            <img class="nav-link px-2" src="{% static 'icons/logout.png' %}" 
+                                id="logout" alt="logout" height="40em" width="40em"></a></li>
+                        <li><a href="{% url 'food_items:favorites' %}">
+                            <img class="nav-link px-2" src="{% static 'icons/carrot.png' %}" 
+                                id="carrot" alt="carrot" height="40em" width="40em"></a></li>
+                    {% else %}  
+                        <li><a href="{% url 'customer:login' %}">   
+                            <img class="img-thumbnail" src="{% static 'icons/login.png' %}" 
+                                id="login" alt="login" height="40em" width="40em"></a></li>
+                        <li><a href="{% url 'customer:register' %}">
+                            <img class="img-thumbnail" src="{% static 'icons/new_user.png' %}"
+                                id="new_user" alt="new_user" height="40em" width="40em"></a></li>
+                    {% endif %}
                 </ul>
-                <form action="{% url 'food_items:searched_item' %}" method='post' target="search_results">
-                    {% csrf_token %}
+                <form action="{% url 'food_items:search_results' %}" method='get'>
                     <input type="text" name="searched_item" id="searched_item" placeholder="Votre Recherche">
                     <input type="submit" id="top_button">
-                    </form>
-                {% if request.user.is_authenticated %}
-                <p> OK </p>
-                {% else %}
-                <p> NOK</p>
-                {% endif %}
+                </form>
             </div>
         </div>
 

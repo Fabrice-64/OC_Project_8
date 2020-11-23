@@ -12,12 +12,12 @@ Page pour detailed_product :
             <li class="list-group-item">{{ product_details.brand }}</li>
             <li class="list-group-item">{{ stores }}</li>
             <li class="list-group-item">{{ product_details.nutrition_score }}</li>
-        </ul>
-    <div class="card-body">
-        <a href="#" class="card-link"> Enregistrer</a>
-        <a href="#" class="card-link"> Fermer</a>
+        </ul> 
     </div>
-    </div>
+    <form action="{% url 'food_items:essai' %}">
+        <input type="submit" value="Fermer">
+    </form>
+    
 </div>
 
 
