@@ -1,6 +1,7 @@
 from django.urls import path, re_path
 #from .views import ProductList
 from . import views
+from django.views.decorators.cache import cache_page
 
 app_name = "food_items"
 
@@ -12,7 +13,5 @@ urlpatterns = [
          name="search_results"),
     path('favorites/', views.favorites, name="favorites"),
     path('record_product/', views.record_product, name="record_product"),
-    path('essai/', views.essai, name="essai"),
-    #path('search_results/', ProductList.as_view())
 
 ]

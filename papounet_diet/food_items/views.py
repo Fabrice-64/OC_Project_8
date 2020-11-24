@@ -1,16 +1,7 @@
-from django.views.generic import ListView
 from .models import Product, BestProductSelection
-"""
-class ProductList(ListView):
-    model = Product
-"""
-
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import loader
-from django.urls import reverse
-
-from .models import Product
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
+from django.shortcuts import render
 
 # Create your views here.
 
@@ -21,11 +12,17 @@ def product_details(request, product_code):
     return render(request, "food_items/product_details.html", context)
 
 
+@cache_page(60 * 15)
 def search_results(request):
-    searched_item = request.GET['searched_item']
-    results = Product.objects.filter(name__contains=searched_item).order_by("nutrition_score")[:6]
-    context = {'search_results': results, 'searched_item': searched_item}
-    return render(request, "food_items/search_results.html", context)
+    try:
+        searched_item = request.GET['searched_item']
+        results = Product.objects.filter(name__contains=searched_item).order_by("nutrition_score")[:6]
+        context = {'search_results': results}
+        cache.set('cache_results', context)
+        return render(request, "food_items/search_results.html", context)
+    except:
+        context = cache.get('cache_results')
+        return render(request, "food_items/search_results.html", context)
 
 def record_product(request):
     product_to_record = request.POST['product_to_record']
@@ -33,7 +30,3 @@ def record_product(request):
 
 def favorites(request):
     return render(request, "food_items/favorites.html")
-
-def essai(request):
-
-    return redirect('food_items:search_results')
