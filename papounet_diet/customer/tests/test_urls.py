@@ -19,9 +19,3 @@ class SimpleTest(TestCase):
         response = client.get('/customer/login/')
         self.assertTemplateUsed(response, 'customer/login.html')
         self.assertEqual(response.status_code, 200)
-
-    def test_logout(self):
-        client = Client()
-        response = client.get('/customer/logout/')
-        self.assertTemplateUsed(response, 'customer/logout.html')
-        self.assertEqual(response.status_code, 200)
