@@ -3,6 +3,8 @@ from django.views.decorators.cache import cache_page
 from django.core.cache import cache
 from django.shortcuts import render
 from django.utils.datastructures import MultiValueDictKeyError
+from django.contrib.auth import authenticate
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -14,10 +16,14 @@ def product_details(request, product_code):
 
 
 def search_results(request):
+    if request.user.is_authenticated is True:
+        authentication = "ok"
+    else:
+        authentication = "nok"
     try:
         searched_item = request.GET['searched_item']
         results = Product.objects.filter(name__icontains=searched_item).order_by("nutrition_score")[:6]
-        context = {'search_results': results}
+        context = {'search_results': results, 'authentication': authentication}
         cache.set('cache_results', context)
         return render(request, "food_items/search_results.html", context)
     except MultiValueDictKeyError:
@@ -25,8 +31,9 @@ def search_results(request):
         return render(request, "food_items/search_results.html", context)
 
 def record_product(request):
-    product_to_record = request.POST['product_to_record']
-    return render(request, "food_items/record_product.html")
+    product_to_record = request.POST.get('result')
+    print(product_to_record)
+    return HttpResponse('OK Record Product')
 
 def favorites(request):
     return render(request, "food_items/favorites.html")

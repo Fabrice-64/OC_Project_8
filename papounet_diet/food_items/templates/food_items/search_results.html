@@ -2,16 +2,28 @@
 
 
 {% block content %}
-
+{% if authentication == "nok" %}
+<h2> N'étant pas authentifié, vous ne pourrez pas enregistrer votre recherche</h2>
+{% endif %}
 
 <ul id = "search_results">
     {% for result in search_results %}
-    <li><a href="/food_items/product_details/{{ result.code }}/" id="{{result.code}}">
-        Name: {{ result.name }}, Nutriscore: {{result.nutrition_score}}</a></li>
     
+    <li><a href="{% url 'food_items:product_details' result.code %}" id="{{result.code}}">
+        Name: {{ result.name }}, 
+        Nutriscore: {{result.nutrition_score}}</a></li>
+    {% if authentication == "ok" %}
+        <form action = "{% url 'food_items:record_product'  %}" method="post">
+            {{ result.code.is_hidden }}
+        {% csrf_token %}
+        <input type="submit" value="Sauvegarder">
+    </form>
+    {% endif %}
+
     {% empty %}
     <li><h2 id="error_message">Désolé, nous n'avons pas de résultat correspondant</h2></li>
     {% endfor %}
+
 </ul>
 
 {% endblock %}
