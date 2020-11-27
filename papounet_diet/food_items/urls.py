@@ -12,6 +12,6 @@ urlpatterns = [
          views.search_results, 
          name="search_results"),
     path('favorites/', views.favorites, name="favorites"),
-    path('record_product/', views.record_product, name="record_product"),
+    path('record_product/<str:product_code>/', views.record_product, name="record_product"),
 
 ]

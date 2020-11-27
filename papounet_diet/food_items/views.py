@@ -30,9 +30,9 @@ def search_results(request):
         context = cache.get('cache_results')
         return render(request, "food_items/search_results.html", context)
 
-def record_product(request):
-    product_to_record = request.POST.get('result')
-    print(product_to_record)
+def record_product(request, product_code):
+    product_to_record = Product.objects.get(code=product_code)
+    print(product_to_record.name)
     return HttpResponse('OK Record Product')
 
 def favorites(request):

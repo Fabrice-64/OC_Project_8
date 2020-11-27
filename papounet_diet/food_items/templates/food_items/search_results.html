@@ -13,11 +13,9 @@
         Name: {{ result.name }}, 
         Nutriscore: {{result.nutrition_score}}</a></li>
     {% if authentication == "ok" %}
-        <form action = "{% url 'food_items:record_product'  %}" method="post">
-            {{ result.code.is_hidden }}
-        {% csrf_token %}
+        <form action = "{% url 'food_items:record_product' result.code %}" method="get">
         <input type="submit" value="Sauvegarder">
-    </form>
+        </form>
     {% endif %}
 
     {% empty %}
