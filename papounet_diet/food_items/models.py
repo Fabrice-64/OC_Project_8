@@ -35,7 +35,7 @@ class Product(models.Model):
 
 
 class BestProductSelection(models.Model):
-    date_selection = models.DateTimeField()
+    date_selection = models.DateTimeField(auto_now_add=True)
     code = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 

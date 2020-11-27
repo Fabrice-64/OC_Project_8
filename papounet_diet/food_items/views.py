@@ -1,10 +1,10 @@
 from .models import Product, BestProductSelection
-from django.views.decorators.cache import cache_page
 from django.core.cache import cache
 from django.shortcuts import render
 from django.utils.datastructures import MultiValueDictKeyError
 from django.contrib.auth import authenticate
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -32,7 +32,10 @@ def search_results(request):
 
 def record_product(request, product_code):
     product_to_record = Product.objects.get(code=product_code)
+    user = request.user
+    
     print(product_to_record.name)
+    print(user)
     return HttpResponse('OK Record Product')
 
 def favorites(request):
