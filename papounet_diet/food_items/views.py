@@ -1,6 +1,6 @@
 from .models import Product, BestProductSelection
 from django.core.cache import cache
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.utils.datastructures import MultiValueDictKeyError
 from django.contrib.auth import authenticate
 from django.http import HttpResponse
@@ -33,10 +33,11 @@ def search_results(request):
 def record_product(request, product_code):
     product_to_record = Product.objects.get(code=product_code)
     user = request.user
-    
-    print(product_to_record.name)
-    print(user)
-    return HttpResponse('OK Record Product')
+    new_favorite = BestProductSelection(
+        code=product_to_record,
+        user=user)
+    new_favorite.save()
+    return redirect(reverse("food_items:search_results"))
 
 def favorites(request):
     return render(request, "food_items/favorites.html")
