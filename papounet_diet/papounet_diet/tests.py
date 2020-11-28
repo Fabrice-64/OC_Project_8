@@ -91,7 +91,7 @@ class CustomerTestCase(LiveServerTestCase):
         self.browser.find_element_by_class_name('card')
         self.browser.find_element_by_class_name('list-group-item')
         # LK is proposed to record her search for a later use
-        print(self.browser.page_source)
+        #print(self.browser.page_source)
         """
         # If no, she gets back to the home page
         # If yes, she can start the registering process

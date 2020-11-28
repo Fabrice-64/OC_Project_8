@@ -1,4 +1,5 @@
-from food_items.models import Product, Store
+from food_items.models import Product, Store, BestProductSelection
+from django.contrib.auth.models import User
 
 def set_up_db():
     Store.objects.bulk_create([
@@ -31,3 +32,24 @@ def set_up_db():
     p2.stores.set([s2])
     p1.save()
     p2.save()
+
+    User.objects.bulk_create([
+        User(first_name="Fabrice",
+             last_name="Jaouën",
+             email="fabricejaouen@yahoo.com",
+             is_superuser=True,
+             username="admin",
+             password="pwd",
+             is_staff=True,
+             is_active=True,
+             date_joined="2020-11-01T05:48:00.941Z"),
+        User(first_name="John",
+             last_name="Doe",
+             email="fabricejaouen@yahoo.com",
+             is_superuser=False,
+             username="user",
+             password='pwd',
+             is_staff=False,
+             is_active=True,
+             date_joined="2020-11-01T05:48:00.941Z"),
+    ])

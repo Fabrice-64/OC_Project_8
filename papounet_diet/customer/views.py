@@ -21,7 +21,7 @@ def user_login(request):
                     return render(request, "customer/failed_login.html", {'info': info, 'next_step': "create_account"})
             else:
                 info = "Vos identifiants sont incorrects"
-                return render(request, "customer/failed_login.html", {'info': info, 'next_step': "log_in_again<q"})
+                return render(request, "customer/failed_login.html", {'info': info, 'next_step': "log_in_again"})
     else:
         form = LoginForm()
 

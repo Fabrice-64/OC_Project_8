@@ -5,6 +5,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 from django.contrib.auth import authenticate
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from food_items import queries as q
 
 # Create your views here.
 
@@ -33,10 +34,7 @@ def search_results(request):
 def record_product(request, product_code):
     product_to_record = Product.objects.get(code=product_code)
     user = request.user
-    new_favorite = BestProductSelection(
-        code=product_to_record,
-        user=user)
-    new_favorite.save()
+    q.query_record_best_product(product_to_record, user)
     return redirect(reverse("food_items:search_results"))
 
 def favorites(request):
