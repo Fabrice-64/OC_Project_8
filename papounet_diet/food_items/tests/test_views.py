@@ -30,6 +30,7 @@ class SimpleTest(TestCase):
         request = self.factory.get('food_items/record_product/')
         request.user = self.user
         response = v.record_product(request, "01234567891011")
+        # code 302 due to a redirection in the record_product view
         self.assertEqual(response.status_code, 302)
         self.assertTemplateUsed('food_items/search_results.html')
 
