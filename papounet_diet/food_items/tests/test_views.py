@@ -35,7 +35,8 @@ class SimpleTest(TestCase):
         self.assertTemplateUsed('food_items/search_results.html')
 
     def test_favorites(self):
-        client = Client()
-        response = client.get('/food_items/favorites/')
+        request = self.factory.get('/food_items/favorites/')
+        request.user = self.user
+        response = v.fetch_favorites(request)
         self.assertTemplateUsed('food_items/favorites.html')
         self.assertEqual(response.status_code, 200)
