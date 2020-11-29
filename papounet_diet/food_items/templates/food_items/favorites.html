@@ -4,5 +4,11 @@
 {% block content %}
 
 Vous êtes sur la page Favorites du module food_items.
-
+<ul id = "search_results">
+    {% for favorite in favorites %}
+    
+    <li><a href="{% url 'food_items:product_details' favorite.code %}" id="{{favorite.code}}">
+        Name: {{ favorite.name }}, 
+        Nutriscore: {{ favorite.nutrition_score }}</a></li>
+    {% endfor %}
 {% endblock %}

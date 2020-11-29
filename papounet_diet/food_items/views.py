@@ -14,14 +14,10 @@ def product_details(request, product_code):
 
 
 def search_results(request):
-    if request.user.is_authenticated is True:
-        authentication = "ok"
-    else:
-        authentication = "nok"
     try:
         searched_item = request.GET['searched_item']
         results = q.query_search_results(searched_item)
-        context = {'search_results': results, 'authentication': authentication}
+        context = {'search_results': results}
         cache.set('cache_results', context)
         return render(request, "food_items/search_results.html", context)
     except MultiValueDictKeyError:

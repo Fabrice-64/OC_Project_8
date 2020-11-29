@@ -2,7 +2,7 @@
 
 
 {% block content %}
-{% if authentication == "nok" %}
+{% if not request.user.is_authenticated %}
 <h2> N'étant pas authentifié, vous ne pourrez pas enregistrer votre recherche</h2>
 {% endif %}
 
@@ -12,9 +12,9 @@
     <li><a href="{% url 'food_items:product_details' result.code %}" id="{{result.code}}">
         Name: {{ result.name }}, 
         Nutriscore: {{result.nutrition_score}}</a></li>
-    {% if authentication == "ok" %}
+    {% if request.user.is_authenticated %}
         <form action = "{% url 'food_items:record_product' result.code %}" method="get">
-        <input type="submit" value="Sauvegarder">
+        <input type="submit" value="Sauvegarder" id="record-product-{{ result.code }}">
         </form>
     {% endif %}
 

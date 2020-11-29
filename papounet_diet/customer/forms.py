@@ -3,8 +3,9 @@ from django.contrib.auth.models import User
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(label="Pseudo")
+    password = forms.CharField(label="Mot de Passe", widget=forms.PasswordInput)
+
 
 
 class UserRegistrationForm(forms.ModelForm):

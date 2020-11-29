@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 class CustomerTestCase(LiveServerTestCase):
-    fixtures = ['product', 'store']
+    fixtures = ['product', 'store', 'user']
     
     
     @classmethod
@@ -18,7 +18,7 @@ class CustomerTestCase(LiveServerTestCase):
         cls.browser.quit()
         super().tearDownClass()
 
-    def test_get_product_from_home_page(self):
+    def test_quickly_get_product_from_home_page(self):
         """
         Test the User story where the persona wants to look for a product
         without logging in
@@ -90,16 +90,39 @@ class CustomerTestCase(LiveServerTestCase):
         WebDriverWait(self.browser, 10)
         self.browser.find_element_by_class_name('card')
         self.browser.find_element_by_class_name('list-group-item')
-        # LK is proposed to record her search for a later use
+
+
+    def test_log_in_then_search_for_product_and_record_it(self):
+        self.browser.get('%s%s' % (self.live_server_url, ''))
+        # As a registered member/customer LK clicks on login icon
+        self.browser.find_element_by_id("login").click()
+        # The login page is displayed
+        self.browser.find_element_by_class_name("login-form")
+        # LK inputs her username
+        customer_input = self.browser.find_element_by_id('id_username')
+        customer_input.clear()
+        customer_input.send_keys('user')
+        # and her password
+        customer_input = self.browser.find_element_by_id('id_password')
+        customer_input.clear()
+        customer_input.send_keys('testuser01')
+        self.browser.find_element_by_id('submit-login').click()
+        # The icon "logout" is diplayed
+        WebDriverWait(self.browser, 2)
+        self.browser.find_element_by_id('logout')
+        # The icon to access the favorites as well
+        self.browser.find_element_by_id('carrot')
+        customer_input = self.browser.find_element_by_name(
+            'searched_item')
+        customer_input.clear()
+        customer_input.send_keys('Nutella')
+        # And she can validate the search
+        self.browser.find_element_by_id('top_button').click()
+        # Then a list of max 6 comparable products
+        elements = self.browser.find_elements_by_id("search_results")
+        assert len(elements) > 0
+        self.browser.find_element_by_id('record-product-01234567891011').click()
+        self.browser.find_element_by_id('carrot').click()
         #print(self.browser.page_source)
-        """
-        # If no, she gets back to the home page
-        # If yes, she can start the registering process
-        # The register page opens
-        # LK processes the registration as a new user (See other User Story)
-        # She is informed that she is a registered user
-        # And she can record the product.
-        """
-        self.fail("Test Incomplet")
 
-
+        
