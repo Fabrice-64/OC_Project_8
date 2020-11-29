@@ -47,6 +47,3 @@ def register(request):
         user_form = UserRegistrationForm()
 
     return render(request, "customer/register.html", {'user_form': user_form})
-
-def favorites(request):
-    return render(request, "food_items/favorites.html")

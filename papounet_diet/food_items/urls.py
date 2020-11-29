@@ -11,7 +11,7 @@ urlpatterns = [
     re_path(r'^search_results/$',
          views.search_results, 
          name="search_results"),
-    path('favorites/', views.favorites, name="favorites"),
+    path('favorites/', views.fetch_favorites, name="favorites"),
     path('record_product/<str:product_code>/', views.record_product, name="record_product"),
 
 ]

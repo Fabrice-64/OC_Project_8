@@ -8,3 +8,12 @@ def query_search_results(searched_item):
 def query_record_best_product(product_to_record, user):
     new_favorite = BestProductSelection(code=product_to_record, user=user)
     new_favorite.save()
+
+def query_fetch_favorites(user):
+    favorites = BestProductSelection.objects.order_by("date_selection")[:6]
+    return favorites
+
+def query_product_details(product_code):
+    product_details = Product.objects.get(code=product_code)
+    stores = ", ".join([store.name for store in product_details.stores.all()])
+    return product_details, stores

@@ -53,3 +53,8 @@ def set_up_db():
              is_active=True,
              date_joined="2020-11-01T05:48:00.941Z"),
     ])
+
+    u1 = User.objects.get(username="user")
+    p1.selection.set([u1])
+    p2.selection.set([u1])
+
