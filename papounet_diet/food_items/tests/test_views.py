@@ -1,36 +1,38 @@
-from django.test import Client, TestCase
+from django.test import Client, TestCase, RequestFactory
 from food_items.models import Product, Store
 from django.contrib.auth.models import User
 from . import fixture as f
 from django.shortcuts import reverse
 from food_items import queries as q
+from food_items import views as v
 
 
 class SimpleTest(TestCase):
     def setUp(self):
         f.set_up_db()
+        self.factory = RequestFactory()
+        self.user = User.objects.get(username="user")
 
     def test_product_details(self):
-        client = Client()
-        response = client.get('/food_items/product_details/01234567891011/')
+        request = self.factory.get('/food_items/product_details')
+        response = v.product_details(request, "01234567891011")
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed('food_items/product_details.html')
 
     def test_search_results(self):
-        client = Client()
-        response = client.get('/food_items/search_results/', {'searched_item': 'test'})
+        request = self.factory.get('/food_items/search_results/')
+        request.user = self.user
+        response = v.search_results(request)
+        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed('food_items/search_results.html')
-        self.assertEqual(response.status_code, 200)
-        
+
     def test_record_product(self):
-        client = Client()
-        response = client.get('/food_items/record_product/01234567891011/')
-        product_to_record = Product.objects.get(code='01234567891011')
-        user = request.user
-        q.query_record_best_product(product_to_record, user)
-        self.assertEqual(response.status_code, 200)
-    
-        
+        request = self.factory.get('food_items/record_product/')
+        request.user = self.user
+        response = v.record_product(request, "01234567891011")
+        self.assertEqual(response.status_code, 302)
+        self.assertTemplateUsed('food_items/search_results.html')
+
     def test_favorites(self):
         client = Client()
         response = client.get('/food_items/favorites/')
