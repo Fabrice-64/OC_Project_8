@@ -1,12 +1,13 @@
 {% extends '../customer/base.html'%}
-{% block title %} Détails du Produit {% endblock %}
+
+{% block title %} Détails Favori {% endblock %}
 {% block content %}
 
 
 <div class="card" style="width: 18rem;">
     {% include "./details_snippet.html" %}
-    <form action="{% url 'food_items:search_results' %}">
-        <input type="submit" value="Fermer">
+    <form action="{% url 'food_items:favorites' %}">
+        <input type="submit" value="Fermer" id="back_to_favorites">
     </form>
     
 </div>

@@ -1,5 +1,6 @@
 {% extends '../customer/base.html'%}
 
+{% block title %} Résultat de Recherche {% endblock %}
 
 {% block content %}
 {% if not request.user.is_authenticated %}
@@ -12,14 +13,14 @@
     <li><a href="{% url 'food_items:product_details' result.code %}" id="{{result.code}}">
         Name: {{ result.name }}, 
         Nutriscore: {{result.nutrition_score}}</a></li>
-    {% if request.user.is_authenticated %}
-        <form action = "{% url 'food_items:record_product' result.code %}" method="get">
-        <input type="submit" value="Sauvegarder" id="record-product-{{ result.code }}">
-        </form>
-    {% endif %}
+        {% if request.user.is_authenticated %}
+            <form action = "{% url 'food_items:record_product' result.code %}" method="get">
+            <input type="submit" value="Sauvegarder" id="record-product-{{ result.code }}">
+            </form>
+        {% endif %}
 
     {% empty %}
-    <li><h2 id="error_message">Désolé, nous n'avons pas de résultat correspondant</h2></li>
+        <li><h2 id="error_message">Désolé, nous n'avons pas de résultat correspondant</h2></li>
     {% endfor %}
 
 </ul>

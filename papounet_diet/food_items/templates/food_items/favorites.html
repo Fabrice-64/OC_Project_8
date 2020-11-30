@@ -1,14 +1,17 @@
 {% extends '../customer/base.html'%}
-{% block title %} Favoris {% endblock %}
+{% block title %} Vos Favoris {% endblock %}
 
 {% block content %}
 
-Vous êtes sur la page Favorites du module food_items.
-<ul id = "search_results">
+<h3>Voici vos Favoris : </h3>
+<ul id = "favorites_list">
     {% for favorite in favorites %}
     
-    <li><a href="{% url 'food_items:product_details' favorite.code %}" id="{{favorite.code}}">
+    <li><a href="{% url 'food_items:favorite_details' favorite.code %}" id="{{favorite.code}}">
         Name: {{ favorite.name }}, 
         Nutriscore: {{ favorite.nutrition_score }}</a></li>
+
+    {% empty %}
+    <li><h2 id="error_message">Désolé, nous n'avons pas de résultat correspondant</h2></li>
     {% endfor %}
 {% endblock %}

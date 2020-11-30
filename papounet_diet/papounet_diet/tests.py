@@ -121,9 +121,17 @@ class CustomerTestCase(LiveServerTestCase):
         # Then a list of max 6 comparable products
         elements = self.browser.find_elements_by_id("search_results")
         assert len(elements) > 0
+        # LK saves a product
         self.browser.find_element_by_id('record-product-01234567891011').click()
+        # Then LK checks the favorites by clicking on a carrot logo
         self.browser.find_element_by_id('carrot').click()
-        self.browser.find_element_by_id("01234567891011")
-        print(self.browser.page_source)
+        # She wants the details of a product and clicks on it
+        self.browser.find_element_by_id("01234567891011").click()
+        # Then she sees the details of the product
+        # And closes the window to get back to her favorites
+        self.browser.find_element_by_id("back_to_favorites").click()
+        elements = self.browser.find_elements_by_id("favorites_list")
+        assert len(elements) > 0
+        #print(self.browser.page_source)
 
         

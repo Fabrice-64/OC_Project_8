@@ -13,6 +13,12 @@ def product_details(request, product_code):
     return render(request, "food_items/product_details.html", context)
 
 
+def favorite_details(request, product_code):
+    product_details, stores = q.query_product_details(product_code)
+    context = {'product_details': product_details, 'stores': stores}
+    return render(request, "food_items/favorite_details.html", context)
+
+
 def search_results(request):
     try:
         searched_item = request.GET['searched_item']
@@ -34,4 +40,5 @@ def fetch_favorites(request):
     favorites = q.query_fetch_favorites(request.user)
     context = {'favorites': favorites}
     return render(request, "food_items/favorites.html", context)
+
 
