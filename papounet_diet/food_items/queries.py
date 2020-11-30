@@ -10,7 +10,7 @@ def query_record_best_product(product_to_record, user):
     new_favorite.save()
 
 def query_fetch_favorites(user):
-    favorites = BestProductSelection.objects.filter(user=user).order_by("date_selection")[:6]
+    favorites = Product.objects.filter(selection__username="user").distinct("code")[:6]
     return favorites
 
 def query_product_details(product_code):

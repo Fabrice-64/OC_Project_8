@@ -2867,3 +2867,18 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 1606675952215	Marionette	INFO	Listening on port 59498
 1606675952479	Marionette	WARN	TLS certificate errors will be ignored for this session
 1606675955951	Marionette	INFO	Stopped listening on port 59498
+1606713992519	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1f/7zs79q6j4pq_nrtq2qp7j06h0000gn/T/rust_mozprofileVC22Oy"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1606714001310	Marionette	INFO	Listening on port 62659
+1606714001452	Marionette	WARN	TLS certificate errors will be ignored for this session
+1606714005955	Marionette	INFO	Stopped listening on port 62659
+1606714169716	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1f/7zs79q6j4pq_nrtq2qp7j06h0000gn/T/rust_mozprofileJ13GGc"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1606714178192	Marionette	INFO	Listening on port 62829
+1606714178304	Marionette	WARN	TLS certificate errors will be ignored for this session
+1606714182083	Marionette	INFO	Stopped listening on port 62829
+1606714288361	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1f/7zs79q6j4pq_nrtq2qp7j06h0000gn/T/rust_mozprofile7R3PN2"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1606714294393	Marionette	INFO	Listening on port 63027
+1606714294479	Marionette	WARN	TLS certificate errors will be ignored for this session
+1606714297650	Marionette	INFO	Stopped listening on port 63027

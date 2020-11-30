@@ -123,6 +123,7 @@ class CustomerTestCase(LiveServerTestCase):
         assert len(elements) > 0
         self.browser.find_element_by_id('record-product-01234567891011').click()
         self.browser.find_element_by_id('carrot').click()
-        #print(self.browser.page_source)
+        self.browser.find_element_by_id("01234567891011")
+        print(self.browser.page_source)
 
         
