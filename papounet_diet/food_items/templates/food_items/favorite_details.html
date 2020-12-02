@@ -3,13 +3,13 @@
 {% block title %} Détails Favori {% endblock %}
 {% block content %}
 
-
-<div class="card" style="width: 18rem;">
-    {% include "./details_snippet.html" %}
-    <form action="{% url 'food_items:favorites' %}">
-        <input type="submit" value="Fermer" id="back_to_favorites">
-    </form>
-    
+<div class="container">
+    <div class="card" style="width: 18rem;">
+        {% include "./details_snippet.html" %}
+        <form action="{% url 'food_items:favorites' %}">
+            <input type="submit" value="Fermer" id="back_to_favorites">
+        </form>
+    </div> 
 </div>
 
 
