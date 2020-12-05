@@ -1,20 +1,32 @@
+from food_items.openfoodfacts import queries as q
+from food_items.tests import fixture as f
+from django.test import TestCase
+from food_items.models import Product, Store, Category
 
-class UploadQueries():
-    def query_upload_stores(self):
+
+
+class TestUploadQueries(TestCase):
+    def setUp(self):
+        f.set_up_db()
+
+    def test_query_upload_stores(self):
         pass
 
-    def query__upload_categories(self):
+    def test_query__upload_categories(self):
         pass
 
-    def query_upload_products(self):
+    def test_query_upload_products(self):
         pass
 
-class DisplayFromOFF(self):
-    def display_stores(self):
+class TestDisplayFromOFF(TestCase):
+    def setUp(self):
+        f.set_up_db()
+
+    def test_display_stores(self):
         pass
 
-    def display_categories(self):
+    def test_display_categories(self):
         pass
 
-    def display_products(self):
+    def test_display_products(self):
         pass

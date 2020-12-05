@@ -10,7 +10,7 @@ class UploadQueries():
     def query_upload_products(self):
         pass
 
-class DisplayFromOFF(self):
+class DisplayFromOFF():
     def display_stores(self):
         pass
 
