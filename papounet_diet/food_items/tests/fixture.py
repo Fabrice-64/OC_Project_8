@@ -1,4 +1,4 @@
-from food_items.models import Product, Store, BestProductSelection
+from food_items.models import Product, Store, BestProductSelection, Category
 from django.contrib.auth.models import User
 
 def set_up_db():
