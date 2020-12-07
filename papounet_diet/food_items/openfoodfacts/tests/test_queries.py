@@ -1,8 +1,10 @@
+"""
+
 from food_items.openfoodfacts.queries import UploadQueries
 from food_items.tests import fixture as f
 from django.test import TestCase
 from food_items.models import Product, Store, Category
-from food_items.openfoodfacts.data_cleaning import DataCleaning
+from food_items.openfoodfacts.shared_methods import DataCleaning
 import os
 import json
 
@@ -26,15 +28,4 @@ class TestUploadQueries(TestCase, DataCleaning, UploadQueries):
     def test_query_upload_products(self):
         self.fail('Test Usefulness to be proven')
 
-class TestDisplayFromOFF(TestCase):
-    def setUp(self):
-        f.set_up_db()
-
-    def test_display_stores(self):
-        self.fail('Test Usefulness to be proven')
-
-    def test_display_categories(self):
-        self.fail('Test Usefulness to be proven')
-
-    def test_display_products(self):
-        self.fail('Test Usefulness to be proven')
+"""

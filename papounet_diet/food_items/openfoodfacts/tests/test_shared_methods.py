@@ -1,4 +1,4 @@
-from food_items.openfoodfacts.data_cleaning import DataCleaning
+from food_items.openfoodfacts.shared_methods import DataCleaning
 from django.test import TestCase
 import os, sys
 import pathlib
@@ -6,6 +6,7 @@ import json
 
 
 class TestDataCleaning(TestCase, DataCleaning):
+
     def test_check_special_characters(self):
         values = ["",
                   "le-magasin",

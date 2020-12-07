@@ -1,35 +1,35 @@
-from food_items.openfoodfacts.queries import UploadQueries
+import requests
 from django.test import TestCase
 from food_items.models import Product, Store, Category
-import requests
-from food_items.openfoodfacts import config as c
-from food_items.openfoodfacts.methods import ManageOFF
-import json
-from food_items.openfoodfacts.data_cleaning import DataCleaning
-import os
+from food_items.openfoodfacts.off_data_process import ProcessStore
+from food_items.openfoodfacts.config import OpenFoodFactsParams
 
 
-class TestManageOFF(TestCase, ManageOFF):
+class TestProcessStore(TestCase, ProcessStore, OpenFoodFactsParams):
 
     def test_connexion_OFF(self):
-        r = requests.get(c.URL, headers=c.HEADERS)
+        r = requests.get(self.URL, headers=self.HEADERS)
         self.assertEqual(r.status_code, 200)
 
+    
     def test_download_stores(self):
-        self.stores = self.download_stores()
+        self.stores = self._download_stores()
         number_stores = self.stores.get('count')
         self.assertIsNotNone(self.stores)
         self.assertGreater(number_stores, 2000)
 
-    def test_download_categories(self):
+    
+
+
+
+"""
+def test_download_products(self):
+        self.fail('Test non completed')
+def test_download_categories(self):
         self.categories = self.download_categories()
         number_categories = self.categories.get('count')
         self.assertIsNotNone(self.categories)
         self.assertGreater(number_categories, 2000)
-
-    def test_download_products(self):
-        self.fail('Test non completed')
-
 
 class TestUploadData(TestCase, ManageOFF, UploadQueries):
 
@@ -55,3 +55,4 @@ class TestUploadData(TestCase, ManageOFF, UploadQueries):
 
     def test_upload_products(self):
         self.fail('Test non completed')
+"""
