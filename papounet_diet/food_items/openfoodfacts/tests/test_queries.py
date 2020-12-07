@@ -1,32 +1,40 @@
-from food_items.openfoodfacts import queries as q
+from food_items.openfoodfacts.queries import UploadQueries
 from food_items.tests import fixture as f
 from django.test import TestCase
 from food_items.models import Product, Store, Category
+from food_items.openfoodfacts.data_cleaning import DataCleaning
+import os
+import json
 
 
 
-class TestUploadQueries(TestCase):
+class TestUploadQueries(TestCase, DataCleaning, UploadQueries):
     def setUp(self):
-        f.set_up_db()
+        current_path = os.path.abspath(os.getcwd())
+        with open(os.path.join(current_path, "food_items/openfoodfacts/tests/off_data_to_be_tested/mock_stores.json"), 'r') as f:
+            self.store_data = json.load(f)
+            self.key_file = "tags"
+            self.key_item = "name"
 
     def test_query_upload_stores(self):
-        pass
+        self.fail('Test Usefulness to be proven')
+
 
     def test_query__upload_categories(self):
-        pass
+        self.fail('Test Usefulness to be proven')
 
     def test_query_upload_products(self):
-        pass
+        self.fail('Test Usefulness to be proven')
 
 class TestDisplayFromOFF(TestCase):
     def setUp(self):
         f.set_up_db()
 
     def test_display_stores(self):
-        pass
+        self.fail('Test Usefulness to be proven')
 
     def test_display_categories(self):
-        pass
+        self.fail('Test Usefulness to be proven')
 
     def test_display_products(self):
-        pass
+        self.fail('Test Usefulness to be proven')

@@ -41,17 +41,17 @@ class CustomerTestCase(LiveServerTestCase):
         # In the upper half of the page, a picture
         self.browser.find_element_by_css_selector('img#background_picture')
         # Contains the motto and a piece of advice
-        self.browser.find_element_by_css_selector('h1#motto')
-        self.browser.find_element_by_css_selector('h2#advice')
+        self.browser.find_element_by_css_selector('h2#motto')
+        self.browser.find_element_by_css_selector('h3#advice')
         # and a search field with a validation button (see below)
         # Just below Lily Kala can see the story of the company
-        self.browser.find_element_by_css_selector('h2#heroes')
+        self.browser.find_element_by_css_selector('h3#heroes')
         self.browser.find_element_by_css_selector('p#story')
         # With the pictures of Colette and Remy
         self.browser.find_element_by_css_selector('img#Colette')
         self.browser.find_element_by_css_selector('img#Remy')
         # Still below LK sees an invite to contact the company
-        self.browser.find_element_by_css_selector('h2#call_to_action')
+        self.browser.find_element_by_css_selector('h4#call_to_action')
         # Per telephone
         self.browser.find_element_by_css_selector('img#telephone')
         self.browser.find_element_by_css_selector('p#phone_number')
@@ -87,7 +87,7 @@ class CustomerTestCase(LiveServerTestCase):
         # LK selects a product to get some details
         self.browser.find_element_by_id("01234567891011").click()
         # A new window opens, showing the details
-        WebDriverWait(self.browser, 10)
+        WebDriverWait(self.browser, 3)
         self.browser.find_element_by_class_name('card')
         self.browser.find_element_by_class_name('list-group-item')
 
