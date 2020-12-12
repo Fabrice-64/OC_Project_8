@@ -7,19 +7,23 @@ class AdminStore(admin.ModelAdmin):
     list_display = ('name',)
     ordering = ('name',)
 
-    actions = ['download_stores']
-    def download_stores(self, request, queryset):
-        download_stores.short_description = "Populate the DB with Stores"
-        queryset.create(name="Cora")
-        queryset.save()
 
+@admin.register(Category)
+class AdminCategory(admin.ModelAdmin):
+    list_display = ('name',)
+    ordering = ('name',)
 
+    actions = ['download_products']
+    def download_products(self, request, queryset):
+        pass
+    download_products.short_description = "Populate the DB with Products"
 
 
 @admin.register(Product)
 class AdminProduct(admin.ModelAdmin):
     list_display = ('name', 'brand', 'code', 'nutrition_score')
     ordered = ('name',)
+    
+    
 
 
-admin.site.register(Category)

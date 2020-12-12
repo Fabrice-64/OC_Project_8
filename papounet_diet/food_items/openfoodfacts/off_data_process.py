@@ -34,5 +34,36 @@ class ProcessCategory(DataCleaning, OpenFoodFactsParams, UploadQueries):
         
 
 
-class ProcessProduct:
-    pass
+class ProcessProduct(DataCleaning, OpenFoodFactsParams, UploadQueries):
+    def _configure_request_payload(self, category, page_number):
+        self.payload.update({"tag_0": category})
+        self.payload.update({"page": page_number})
+        return self.payload
+    
+    def _download_products(self):
+        r = requests.get(self.URL, headers=self.HEADERS, params=self.payload)
+        self.product_data = r.json()
+        return self.product_data
+
+    def _sort_out_product_data(self, product_data):
+        products_list = list()
+        for product in product_data["products"]:
+            brand = product.get('brands')
+            name = product.get('product_name')
+            code = product.get('code')
+            nutrition_grade_fr = product.get('nutrition_grade_fr')
+            stores = product.get('stores').split(",")
+            categories = product.get('categories').split(",")
+            image_url = product.get('image_url')
+            products_list.append((code, brand, name, nutrition_grade_fr, stores, categories, image_url))
+        return products_list
+
+    def product_full_process(self, category, page_number):
+        self._configure_request_payload(category, page_number)
+        product_data = self._download_products()
+        self.sort_out_product_data(product_data)
+
+
+
+    
+
