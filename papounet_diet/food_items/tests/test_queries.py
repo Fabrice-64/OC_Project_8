@@ -1,7 +1,8 @@
 from food_items import queries as q
 from . import fixture as f
 from django.test import TestCase
-from food_items.models import Product, BestProductSelection
+from food_items.models import Product, BestProductSelection, Store, Category
+
 from django.contrib.auth.models import User
 
 
@@ -14,12 +15,11 @@ class QueriesTest(TestCase):
         self.assertIsNotNone(result)
 
     def test_query_record_best_product(self):
-        length = len(BestProductSelection.objects.all())
+        length = BestProductSelection.objects.count()
         product_to_record = Product.objects.get(code='01234567891011')
         user = User.objects.get(username='user')
         q.query_record_best_product(product_to_record, user)
-        n_length = len(BestProductSelection.objects.all())
-        self.assertEqual(length+1, n_length)
+        self.assertEqual(length+1, BestProductSelection.objects.count())
 
     def test_query_fetch_favorites(self):
         user = User.objects.get(username='user')

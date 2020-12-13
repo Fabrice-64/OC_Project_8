@@ -51,17 +51,20 @@ class ProcessProduct(DataCleaning, OpenFoodFactsParams, UploadQueries):
             brand = product.get('brands')
             name = product.get('product_name')
             code = product.get('code')
-            nutrition_grade_fr = product.get('nutrition_grade_fr')
+            nutrition_score = product.get('nutrition_grade_fr')
             stores = product.get('stores').split(",")
             categories = product.get('categories').split(",")
             image_url = product.get('image_url')
-            products_list.append((code, brand, name, nutrition_grade_fr, stores, categories, image_url))
+            last_modified = product.get('last_modified_t')
+            products_list.append((brand, name, code, nutrition_score,
+                                  stores, categories, image_url, last_modified, 
+                                ))
         return products_list
 
     def product_full_process(self, category, page_number):
         self._configure_request_payload(category, page_number)
         product_data = self._download_products()
-        self.sort_out_product_data(product_data)
+        self._sort_out_product_data(product_data)
 
 
 

@@ -27,3 +27,24 @@ class MockDataOFF:
            }
 
     
+class MockProducts:
+    mock_product_list = [
+        ('3229820021027', 
+        'Bjorg', 
+        "P'tit Nature Complet", 
+        1602617804,
+        'b', 
+        ['Magasins U', 'carrefour', 'leclerc'],
+        ['Snacks', ' Snacks sucrés', ' Biscuits et gâteaux', ' Biscuits', 'Petit-déjeuners'],
+        'https://static.openfoodfacts.org/images/products/322/982/002/1027/front_fr.135.400.jpg'
+        ),
+        ('5410041001204',
+         'LU',
+         'TUC Original',
+         1607767361,
+         'd',
+         ['Carrefour', 'Magasins U', 'REWE'],
+         ['Snacks', 'Snacks salés', 'Snacks sucrés', 'Biscuits et gâteaux', 'Biscuits'], 
+         'https://static.openfoodfacts.org/images/products/541/004/100/1204/front_fr.97.400.jpg'
+         )
+        ]

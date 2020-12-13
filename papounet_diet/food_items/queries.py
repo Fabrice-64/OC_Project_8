@@ -17,3 +17,5 @@ def query_product_details(product_code):
     product_details = Product.objects.get(code=product_code)
     stores = ", ".join([store.name for store in product_details.stores.all()])
     return product_details, stores
+
+

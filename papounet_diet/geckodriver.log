@@ -2958,3 +2958,21 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 1607795814859	Marionette	INFO	Listening on port 59930
 1607795815011	Marionette	WARN	TLS certificate errors will be ignored for this session
 1607795820811	Marionette	INFO	Stopped listening on port 59930
+1607863949292	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1f/7zs79q6j4pq_nrtq2qp7j06h0000gn/T/rust_mozprofileRU7YPN"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1607863961414	Marionette	INFO	Listening on port 49167
+1607863961559	Marionette	WARN	TLS certificate errors will be ignored for this session
+1607863963379	Marionette	INFO	Stopped listening on port 49167
+1607864309133	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1f/7zs79q6j4pq_nrtq2qp7j06h0000gn/T/rust_mozprofile48Zxgw"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1607864319369	Marionette	INFO	Listening on port 49564
+1607864319493	Marionette	WARN	TLS certificate errors will be ignored for this session
+1607864325832	Marionette	INFO	Stopped listening on port 49564
+1607864360065	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1f/7zs79q6j4pq_nrtq2qp7j06h0000gn/T/rust_mozprofilebgptBt"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1607864365596	Marionette	INFO	Listening on port 49744
+1607864365659	Marionette	WARN	TLS certificate errors will be ignored for this session
+1607864374198	Marionette	INFO	Stopped listening on port 49744
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x1D0011,name=PBackgroundStorage::Msg_Observe) Channel error: cannot send/recv
+
