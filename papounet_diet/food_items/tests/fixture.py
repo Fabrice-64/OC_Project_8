@@ -7,12 +7,14 @@ def set_up_db():
                 Category(name="Snacks sucrés"),
                 Category(name="Petit-déjeuners"),
                 Category(name="Biscuits"),
-                Category(name="Biscuits et gâteaux")
+                Category(name="Biscuits et gâteaux"),
+                Category(name="Snacks salés")
         ])
         Store.objects.bulk_create([
             Store(name="Carrefour"),
             Store(name="Leclerc"),
-            Store(name="Magasins U")])
+            Store(name="Magasins U"),
+            Store(name="REWE")])
         Product.objects.bulk_create([
             Product(name="Nutella Allégé",
                     brand="Nutella Ferrero",

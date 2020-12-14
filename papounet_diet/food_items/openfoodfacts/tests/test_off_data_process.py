@@ -28,8 +28,7 @@ class TestProcessStore(TestCase, ProcessStore, OpenFoodFactsParams, MockDataOFF)
     def test_store_full_process(self, mock_get):
         self.stores = self.from_data_to_list(self.store_data, "tags", "name")
         self._upload_stores(self.stores)
-        number_stores = Store.objects.count()
-        self.assertGreater(number_stores, 200)
+        self.assertGreater(Store.objects.count(), 200)
 
     
 class TestProcessCategory(TestCase, ProcessCategory, OpenFoodFactsParams, MockDataOFF):
@@ -44,11 +43,26 @@ class TestProcessCategory(TestCase, ProcessCategory, OpenFoodFactsParams, MockDa
     def test_category_full_process(self, mock_get):
         self.categories = self.from_data_to_list(self.category_data, "tags", "name")
         self._upload_categories(self.categories)
-        number_categories = Category.objects.count()
-        self.assertGreater(number_categories, 20)
+        self.assertGreater(Category.objects.count(), 20)
 
 
-class TestProcessProduct(TestCase, ProcessProduct, OpenFoodFactsParams, MockDataOFF, MockProducts, UploadQueries):
+class TestUploadProduct(TestCase, MockProducts, UploadQueries):
+    def setUp(self):
+        f.set_up_db()
+
+    def test_query_upload_products(self):
+        try:
+            Product.objects.get(name="P'tit Nature Complet")
+            self.fail("Le Produit est déjà en base !!")
+        except Exception:
+            self.query_upload_products(self.mock_product_list)
+            product = Product.objects.get(name="P'tit Nature Complet")
+            self.assertIsNotNone(product)
+            self.assertEqual(len([store.name for store in product.stores.all()]), 3)
+            self.assertEqual(len([category.name for category in product.categories.all()]), 5)
+
+
+class TestProcessProduct(TestCase, ProcessProduct, OpenFoodFactsParams, MockDataOFF):
     def setUp(self):
         f.set_up_db()
 
@@ -67,14 +81,6 @@ class TestProcessProduct(TestCase, ProcessProduct, OpenFoodFactsParams, MockData
         self.assertEqual(len(self.data_sorted_out), 20)
         return self.data_sorted_out
 
-    def test_query_upload_products(self):
-        try:
-            Product.objects.get(name="P'tit Nature Complet")
-        except Exception:
-            product_list = self.query_upload_products(self.mock_product_list)
-            self.assertEqual(len(product_list), 2)
-            self.assertEqual(product_list[1].image_url, "https://static.openfoodfacts.org/images/products/541/004/100/1204/front_fr.97.400.jpg")
-            self.assertIsNotNone(Product.objects.get(name="P'tit Nature Complet"))
             
 
     

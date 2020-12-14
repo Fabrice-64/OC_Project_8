@@ -34,8 +34,8 @@ class MockProducts:
         "P'tit Nature Complet", 
         1602617804,
         'b', 
-        ['Magasins U', 'carrefour', 'leclerc'],
-        ['Snacks', ' Snacks sucrés', ' Biscuits et gâteaux', ' Biscuits', 'Petit-déjeuners'],
+        ['Magasins U', 'Carrefour', 'Leclerc'],
+        ['Snacks', 'Snacks sucrés', 'Biscuits et gâteaux', 'Biscuits', 'Petit-déjeuners'],
         'https://static.openfoodfacts.org/images/products/322/982/002/1027/front_fr.135.400.jpg'
         ),
         ('5410041001204',

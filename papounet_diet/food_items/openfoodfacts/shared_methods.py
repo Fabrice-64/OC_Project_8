@@ -40,3 +40,8 @@ class DataCleaning():
                 list_items.append(item)
         return list_items
 
+    def string_into_list(self, string_to_convert):
+        data = string_to_convert.split(",")
+        data = [item.strip() for item in data]
+        return data
+
