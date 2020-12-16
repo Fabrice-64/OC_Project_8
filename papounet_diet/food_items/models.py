@@ -25,7 +25,7 @@ class Product(models.Model):
     selection = models.ManyToManyField(User, through='BestProductSelection')
     stores = models.ManyToManyField(Store)
     categories = models.ManyToManyField(Category)
-    image_url = models.URLField(default="https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png")
+    image_url = models.URLField(null=True, blank=True, default="https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png")
 
     def __str__(self):
         return self.code

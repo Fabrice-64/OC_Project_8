@@ -58,7 +58,7 @@ class TestUploadProduct(TestCase, MockProducts, UploadQueries):
             self.query_upload_products(self.mock_product_list)
             product = Product.objects.get(name="P'tit Nature Complet")
             self.assertIsNotNone(product)
-            self.assertEqual(len([store.name for store in product.stores.all()]), 3)
+            self.assertEqual(len([store.name for store in product.stores.all()]), 1)
             self.assertEqual(len([category.name for category in product.categories.all()]), 5)
 
 

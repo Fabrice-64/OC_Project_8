@@ -36,12 +36,16 @@ class DataCleaning():
         items = data.get(key_file)
         for item in items:
             item = self._check_special_characters(item.get(key_item))
+            item = item.strip()
             if item != "NaN":
                 list_items.append(item)
         return list_items
 
-    def string_into_list(self, string_to_convert):
-        data = string_to_convert.split(",")
-        data = [item.strip() for item in data]
+    def from_string_into_list(self, string_to_convert):
+        if string_to_convert is not None:
+            data = string_to_convert.split(",")
+            data = [item.strip() for item in data]
+        else:
+            data=[""]
         return data
 
