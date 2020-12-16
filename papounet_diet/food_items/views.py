@@ -32,7 +32,7 @@ def search_results(request):
 
 
 def record_product(request, product_code):
-    q.query_record_best_product(Product.objects.get(code=product_code), request.user)
+    q.query_record_best_product(product_code, request.user)
     return redirect(reverse("food_items:search_results"))
 
 

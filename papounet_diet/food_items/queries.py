@@ -1,4 +1,5 @@
 from .models import Product, BestProductSelection
+from django.contrib.auth.models import User
 
 
 def query_search_results(searched_item):
@@ -6,6 +7,8 @@ def query_search_results(searched_item):
     return results
 
 def query_record_best_product(product_to_record, user):
+    product_to_record = Product.objects.get(code=product_to_record)
+    user = User.objects.get(username=user)
     new_favorite = BestProductSelection(code=product_to_record, user=user)
     new_favorite.save()
 
