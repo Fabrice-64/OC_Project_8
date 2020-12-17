@@ -32,8 +32,9 @@
         <div class="container">
             <nav class="navbar navbar-fixed-top bg-light">
                 <a class="navbar-brand">
-                    <img src="{% static 'pictures/logo_pur_beurre.png' %}" id="company_logo" alt="logo pur beurre" height="40em" width="40em"/>Pur Beurre</a>
-                        
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'pictures/logo_pur_beurre.png' %}" id="company_logo" alt="logo pur beurre" height="40em" width="40em"/>Pur Beurre</a>
+                </a>
                 {% if request.user.is_authenticated %}
                     <div class="row offset-6">
                         <a href="{% url 'customer:personal_infos' %}"> 
