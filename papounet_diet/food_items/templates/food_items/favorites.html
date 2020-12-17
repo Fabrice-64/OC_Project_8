@@ -6,11 +6,15 @@
 <h3>Voici vos Favoris : </h3>
 <ul id = "favorites_list">
     {% for favorite in favorites %}
-    
-    <li><a href="{% url 'food_items:favorite_details' favorite.code %}" id="{{favorite.code}}">
-        Name: {{ favorite.name }}, 
-        Nutriscore: {{ favorite.nutrition_score }}</a></li>
-
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src='{{ favorite.image_url }}'
+            id="{{favorite.code}}" alt="Image Produit">
+        <div class="card-body">
+            <a>Name: {{ favorite.name }}, 
+            Nutriscore: {{ favorite.nutrition_score }}
+        </a>
+        </div>
+    </div>
     {% empty %}
     <li><h2 id="error_message">Désolé, nous n'avons pas de résultat correspondant</h2></li>
     {% endfor %}

@@ -28,3 +28,13 @@ class TestDataCleaning(TestCase, DataCleaning):
         store_list = self.from_data_to_list(data, key_file, key_item)
         self.assertGreater(len(store_list), 10)
         return store_list
+
+    def test_assign_url(self):
+        values = ["", "null", "https://test_url.com"]
+        test_url = self.assign_url(values[0])
+        self.assertEqual(test_url, "https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png")
+        test_url = self.assign_url(values[1])
+        self.assertEqual(test_url, "https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png")
+        test_url = self.assign_url(values[2])
+        self.assertEqual(test_url, "https://test_url.com")
+

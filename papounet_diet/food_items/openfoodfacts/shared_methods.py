@@ -49,3 +49,11 @@ class DataCleaning():
             data=[""]
         return data
 
+    def assign_url(self, url_to_assign):
+        if url_to_assign is None or url_to_assign in ["", "null"]:
+            assigned_url = "https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png"
+        else:
+            assigned_url = url_to_assign
+        return assigned_url
+        
+
