@@ -30,8 +30,8 @@ class CustomerTestCase(LiveServerTestCase):
         # The company logo
         self.browser.find_element_by_id("company_logo")
         # The company name
-        brand_element = self.browser.find_element_by_class_name('navbar-brand')
-        self.assertEqual('Pur Beurre', brand_element.text)
+        self.browser.find_element_by_class_name('navbar-brand')
+        self.browser.find_element_by_css_selector("img#company_logo")
         # The possibility to log in
         self.browser.find_element_by_id("login")
         customer_input = self.browser.find_element_by_name(

@@ -13,3 +13,8 @@ This web application offers the user to look for food items with better nutritio
 
 # Environment
 This project is developped using Python 3.8.1 and Django 3.1.2
+
+# Script for efficient testing:
+Using the Shell, type what the following command line, it will remove almost all irrelevant files.
+
+$ coverage run --omit='*/venv/*,*/tests/*,*/migrations/*,*/papounet_diet/tests.py,*/papounet_diet/settings.py,*/manage.py,*/apps.py,*/admin.py'  manage.py test

@@ -7,7 +7,7 @@
 <ul id = "favorites_list">
     {% for favorite in favorites %}
     <div class="card" style="width: 18rem;">
-        <a href="{% url 'food_items:product_details' favorite.code %}" id="{{favorite.code}}">
+        <a href="{% url 'food_items:favorite_details' favorite.code %}" id="{{favorite.code}}">
             <img class="card-img-top" src='{{ favorite.image_url }}'
                 id="{{favorite.code}}" alt="Image Produit">
         </a>
