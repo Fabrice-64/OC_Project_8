@@ -9,11 +9,11 @@
         src="{% static 'pictures/greg-jeanneau-YTbFHT9_IhY-unsplash.jpg' %}" id="background_picture" alt="background picture">
     <div class="card-img-overlay">
         {% if request.user.is_authenticated %}
-        <p> <h2>Bonjour {{ request.user.first_name }}</h1></p>
+        <p> <h2 class="card-title">Bonjour {{ request.user.first_name }}</h2></p>
         {% endif %}
-        <h2 class="card-title" id="motto">Pur Beurre, la Qualité près de chez vous</h1>
+        <h2 class="card-title" id="motto">Pur Beurre, la Qualité près de chez vous</h2>
         <h3 class="card-text" id="advice">Trouvez votre produit de substitution : 
-            Entrez le nom du produit référence ci-dessous</h2>
+            Entrez le nom du produit référence ci-dessous</h3>
             <form action="{% url 'food_items:search_results' %}" method='get'>
                 <input type="text" name="searched_item" id="searched_item" placeholder="Votre recherche">
                 <input type="submit" id="main_button">
