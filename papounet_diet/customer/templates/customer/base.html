@@ -10,40 +10,40 @@
     </head>
     <body>
         <div class="container">
-            <nav class="navbar fixed-top">
-                <a class="navbar-brand">
-                    <a href="{% url 'home' %}">
-                        <img src="{% static 'pictures/logo_pur_beurre.png' %}" id="company_logo" alt="logo pur beurre" height="40em" width="40em"/>Pur Beurre</a>
-                </a>
-                {% if request.user.is_authenticated %}
-                    <div class="row offset-6">
-                        <a href="{% url 'customer:personal_infos' %}">
-                            <img class="nav-link px-2" src="{% static 'icons/personal_infos.png' %}" 
-                                id="logout" alt="logout" height="40em" width="40em"></a>
-                               
-                        <a href="{% url 'customer:logout' %}"> 
-                            <img class="nav-link px-2" src="{% static 'icons/logout.png' %}" 
-                                id="logout" alt="logout" height="40em" width="40em"></a>
-                        <a href="{% url 'food_items:favorites' %}">
-                                <img class="nav-link px-2" src="{% static 'icons/carrot.png' %}" 
-                                    id="carrot" alt="carrot" height="40em" width="40em"></a>
-                    </div>
-                {% else %}
-                    <div class="row offset-6">
-                        <a href="{% url 'customer:login' %}">   
-                            <img class="img-thumbnail" src="{% static 'icons/login.png' %}" 
-                                id="login" alt="login" height="40em" width="40em"></a></li>
-                        <a href="{% url 'customer:register' %}">
-                            <img class="img-thumbnail" src="{% static 'icons/new_user.png' %}"
-                                id="new_user" alt="new_user" height="40em" width="40em"></a></li>
-                    </div>          
-                {% endif %}              
-                        
-                    <form class="form-inline" action="{% url 'food_items:search_results' %}" method='get'>
-                        <input type="text" name="searched_item" id="searched_item" placeholder="Votre Recherche">
-                        <input type="submit" id="top_button">
-                    </form>
-            </nav>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a href="{% url 'home' %}">
+                <img src="{% static 'pictures/logo_pur_beurre.png' %}" id="company_logo" alt="logo pur beurre" height="40em" width="40em"/>Pur Beurre</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                  {% if request.user.is_authenticated %}
+                  <div class="row offset-6 mr-auto mt-2 mt-lg-0">
+                      <a class="nav-link" href="{% url 'customer:personal_infos' %}">
+                        <img class="img-thumbnail" src="{% static 'icons/personal_infos.png' %}" 
+                            id="logout" alt="logout" height="40em" width="40em"></a>
+                      <a class="nav-link" href="{% url 'customer:logout' %}">
+                        <img class="img-thumbnail" src="{% static 'icons/logout.png' %}" 
+                            id="logout" alt="logout" height="40em" width="40em"></a>
+                      <a class="nav-link" href="{% url 'food_items:favorites' %}">
+                        <img class="img-thumbnail" src="{% static 'icons/carrot.png' %}" 
+                            id="carrot" alt="carrot" height="40em" width="40em"></a>
+                  {% else %}
+                  <div class="row offset-6 mr-auto mt-2 mt-lg-0">
+                      <a class="nav-link" href="{% url 'customer:login' %}">   
+                          <img class="img-thumbnail" src="{% static 'icons/login.png' %}" 
+                            id="login" alt="login" height="40em" width="40em"></a></li>
+                      <a class="nav-link" href="{% url 'customer:register' %}">
+                          <img class="img-thumbnail" src="{% static 'icons/new_user.png' %}"
+                              id="new_user" alt="new_user" height="40em" width="40em"></a>
+                  {% endif %}
+                      <form class="form-inline my-2 my-lg-0" action="{% url 'food_items:search_results' %}" method='get'>
+                        <input class="form-control mr-sm-2" type="text" name="searched_item" id="searched_item" placeholder="Votre Recherche">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="top_button">Valider</button>
+                      </form>
+                  </div>
+                </div>
+              </nav>
 
         {% block content %} 
         {% endblock %}
