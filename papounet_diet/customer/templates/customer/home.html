@@ -14,17 +14,14 @@
         <h2 class="card-title" id="motto">Pur Beurre, la Qualité près de chez vous</h2>
         <h3 class="card-text" id="advice">Trouvez votre produit de substitution : 
             Entrez le nom du produit référence ci-dessous</h3>
-            <form action="{% url 'food_items:search_results' %}" method='get'>
-                <input type="text" name="searched_item" id="searched_item" placeholder="Votre recherche">
-                <input type="submit" id="main_button">
-            </form>
+            {% include "./search_form_snippet.html" %}
     </div>
 
 </div>
 <div class="card">
-    <h3 class="card-text" id="heroes">Colette et Rémy vous souhaitent la bienvenue</h2>
-    <p class="card-text" id="story">Notre passion pour les bonnes choses 
-        nous encourage à vous aider à mieux manger ! Suivez-nous</p>
+    <h3 class="card-text" id="heroes">Colette et Rémy vous souhaitent la bienvenue</h3>
+    <h4 class="card-text" id="story">Notre passion pour les bonnes choses 
+        nous encourage à vous aider à mieux manger ! Suivez-nous</h4>
     <div class="row">
         <div class="col">
             <div class="text-center">

@@ -30,7 +30,6 @@ class CustomerTestCase(LiveServerTestCase):
         # The company logo
         self.browser.find_element_by_id("company_logo")
         # The company name
-        self.browser.find_element_by_class_name('navbar-brand')
         self.browser.find_element_by_css_selector("img#company_logo")
         # The possibility to log in
         self.browser.find_element_by_id("login")
@@ -46,7 +45,7 @@ class CustomerTestCase(LiveServerTestCase):
         # and a search field with a validation button (see below)
         # Just below Lily Kala can see the story of the company
         self.browser.find_element_by_css_selector('h3#heroes')
-        self.browser.find_element_by_css_selector('p#story')
+        self.browser.find_element_by_css_selector('h4#story')
         # With the pictures of Colette and Remy
         self.browser.find_element_by_css_selector('img#Colette')
         self.browser.find_element_by_css_selector('img#Remy')

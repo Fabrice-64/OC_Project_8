@@ -37,15 +37,31 @@
 
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) { 
+    h2.card-title{
+        font-size: medium;
+    }
+    h3.card-text{
+        font-size: small
+    }
+    h4.card-text{
+        font-size: x-small
+    }
 
 }
 
 /*Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
+    h2.card-title{
+        font-size: medium;
+    }
+    h3.card-text{
+        font-size: small;
+    }
+    h4.card-text{
+        font-size: x-small
+    }
 
 }
-
-
 
 /* Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) {
@@ -55,8 +71,12 @@
     h3.card-text{
         font-size: small;
     }
+    h4.card-text{
+        font-size: x-small
+    }
     .card-img-top{
     width: 12rem;
     height: 12rem;
     }
+}
 }
