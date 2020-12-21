@@ -23,7 +23,7 @@ def search_results(request):
     try:
         searched_item = request.GET['searched_item']
         results = q.query_search_results(searched_item)
-        context = {'search_results': results}
+        context = {'search_results': results, 'searched_item': searched_item }
         cache.set('cache_results', context)
         return render(request, "food_items/search_results.html", context)
     except MultiValueDictKeyError:
