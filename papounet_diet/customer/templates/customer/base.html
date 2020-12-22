@@ -18,6 +18,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                   {% if request.user.is_authenticated %}
+                  <!--the navbar looks differently whether the user is logged in or not-->
                   <div class="row offset-6 mr-auto mt-2 mt-lg-0">
                       <a class="nav-link" href="{% url 'customer:personal_infos' %}">
                         <img class="img-thumbnail" src="{% static 'icons/personal_infos.png' %}" 
@@ -25,6 +26,7 @@
                       <a class="nav-link" href="{% url 'customer:logout' %}">
                         <img class="img-thumbnail" src="{% static 'icons/logout.png' %}" 
                             id="logout" alt="logout" height="40em" width="40em"></a>
+                      <!--the "carrot displays the favorites"-->
                       <a class="nav-link" href="{% url 'food_items:favorites' %}">
                         <img class="img-thumbnail" src="{% static 'icons/carrot.png' %}" 
                             id="carrot" alt="carrot" height="40em" width="40em"></a>

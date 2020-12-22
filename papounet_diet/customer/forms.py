@@ -1,3 +1,18 @@
+"""
+    This module is a personalization of the forms proposed by Django.
+    They are to be used for account creation and authentication.
+
+    Classes:
+        LoginForm
+
+        UserRegistrationForm
+
+    Exceptions:
+        NIL
+
+    Functions:
+        NIL
+"""
 from django import forms
 from django.contrib.auth.models import User
 

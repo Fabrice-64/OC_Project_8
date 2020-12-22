@@ -1,3 +1,37 @@
+"""
+    This module deals with all issues directly related to the user or customer.
+    The common HTML Code to all apps. is managed from here as well.
+    Therefore, if the different apps were to be split, don't forget to transfer
+    the relevant code.
+
+    Classes:
+        NIL
+
+    Exceptions:
+        NIL
+
+    Functions:
+        They 
+        user_login
+
+        user_logout
+
+        home:
+        simply renders to the home page
+
+        register:
+        used to create a new user
+
+        personal_infos:
+        just display infos from the user. No input expected.
+
+        terms_of_use
+        just display the related piece of information.
+
+        contact
+        just display the contact coordinates.
+"""
+
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm, UserRegistrationForm
