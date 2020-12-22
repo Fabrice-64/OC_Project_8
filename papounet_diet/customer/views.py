@@ -50,3 +50,9 @@ def register(request):
 
 def personal_infos(request):
     return render(request, "customer/personal_infos.html")
+
+def terms_of_use(request):
+    return render(request,"customer/terms_of_use.html")
+
+def contact(request):
+    return render(request,"customer/contact.html")

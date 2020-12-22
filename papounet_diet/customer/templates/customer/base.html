@@ -46,8 +46,8 @@
         {% endblock %}
     
             <nav class="navbar navbar-fixed-bottom">
-                <a href="#" id="terms_of_use">Mentions Légales</a>
-                <a href="#" id="contact">Contact</a>
+                <a href="{% url 'customer:terms_of_use' %}" id="terms_of_use">Mentions Légales</a>
+                <a href="{% url 'customer:contact' %}" id="contact">Contact</a>
             </nav>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
