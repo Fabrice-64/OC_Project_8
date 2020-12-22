@@ -20,10 +20,9 @@
     <h3 class="search_results">
         <p class="text-center" id="announce_results">Voici les résultats :</p>
     </h3>
-    <div class="container" style="background-color: lightcyan;">
+    <div class="container" style="background-color: #C45525;">
         <div class="row align-items-start">
         {% for result in search_results %}
-        
             <div class="col-md-4 col-6">
                 <div class="card-deck">
                     <div class="card-img-top">
@@ -44,7 +43,7 @@
                 </div>
             </div>
             {% empty %}
-            <h2 id="error_message">Désolé, nous n'avons pas de résultat correspondant</h2>
+            <h2 id="error_message" style="margin-left: 4ch;">Désolé, nous n'avons pas de résultat correspondant</h2>
         {% endfor %}
         </div>
     </div>

@@ -1,22 +1,27 @@
+body{
+    color: #345A61;
+}
 .container {
-    border: 3px solid rebeccapurple;
+    border: 1px thin #E8A75D;
     padding: 3px;
 }
 .row {
-  border: 1px solid #7451EB;
+  border: 1px thin #7451EB;
   padding: 3px;
 }
 [class="col"] {
   padding: 1rem;
-  border: 2px solid #3FA5DB;
+  border: 1px thin #3FA5DB;
 }
 .navbar {
-    border: 1px solid green;
-  padding: 3px;
+    border: 1px thin #DE9450;
+    padding: 3px;
+    background-color: #E8A75D;
 }
 .card-deck{
     margin: 3px;
     border-style: inset;
+    background-color: #86EBE6;
 }
 .card-img{
     opacity: 0.3;
@@ -35,9 +40,9 @@
     border-radius: 50%;
     text-align: center;
     font-size: 21px;
-    border: 2px solid #3498db;
+    border: 1px thin #3498db;
     color:white;
-    background:#3498db;
+    background: #DE9440;
     position: relative;
 
 }

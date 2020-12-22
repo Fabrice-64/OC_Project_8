@@ -3104,3 +3104,14 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 1608618679123	Marionette	INFO	Listening on port 55842
 1608618679286	Marionette	WARN	TLS certificate errors will be ignored for this session
 1608618684121	Marionette	INFO	Stopped listening on port 55842
+1608620060693	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/1f/7zs79q6j4pq_nrtq2qp7j06h0000gn/T/rust_mozprofile662HFf"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1608620065642	Marionette	INFO	Listening on port 56581
+1608620065744	Marionette	WARN	TLS certificate errors will be ignored for this session
+1608620070588	Marionette	INFO	Stopped listening on port 56581
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x1F0011,name=PBackgroundStorage::Msg_Observe) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x1F0011,name=PBackgroundStorage::Msg_Observe) Channel error: cannot send/recv
+
