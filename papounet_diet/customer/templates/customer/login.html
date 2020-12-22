@@ -9,15 +9,23 @@
       Essayez à nouveau.
     </p>
   {% else %}
-    <p>Vous pouvez entrer ici vos identifiants :</p>
+  <div class="container" style="background-color: lightcyan;">
+    <div class="row d-flex justify-content-center">
   {% endif %}
-  <div class="login-form">
-    <form action="{% url 'customer:login' %}" method="post">
-      {{ form.as_p }}
-      {% csrf_token %}
-      <input type="hidden" name="next" value="{{ next }}" />
-      <p><input type="submit" value="Validez" id="submit-login"></p>
-    </form>
+      <div class="login-form">
+        <div class="card-body">
+          <h5 class="card-title">Vous pouvez entrer ici vos identifiants :</h5>
+          <div class="card-text">
+            <form action="{% url 'customer:login' %}" method="post">
+              {{ form.as_p }}
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ next }}" />
+              <p><input type="submit" value="Validez" id="submit-login"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 {% endblock %}
  

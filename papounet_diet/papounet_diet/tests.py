@@ -78,7 +78,7 @@ class CustomerTestCase(LiveServerTestCase):
         # And she can validate the search
         self.browser.find_element_by_id('top_button').click()
         # Then a list of max 6 comparable products
-        elements = self.browser.find_elements_by_id("search_results")
+        elements = self.browser.find_elements_by_class_name("img-in-card")
         assert len(elements) > 0
         # with an equivalent or better nutrition grade is displayed
         # The name of the product can be seen below the picture
@@ -86,9 +86,9 @@ class CustomerTestCase(LiveServerTestCase):
         # LK selects a product to get some details
         self.browser.find_element_by_id("01234567891011").click()
         # A new window opens, showing the details
-        WebDriverWait(self.browser, 3)
-        self.browser.find_element_by_class_name('card')
-        self.browser.find_element_by_class_name('list-group-item')
+        WebDriverWait(self.browser, 2)
+        self.browser.find_element_by_class_name('card-deck')
+        self.browser.find_element_by_class_name('list-group')
 
 
     def test_log_in_then_search_for_product_and_record_it(self):
@@ -118,8 +118,7 @@ class CustomerTestCase(LiveServerTestCase):
         # And she can validate the search
         self.browser.find_element_by_id('top_button').click()
         # Then a list of max 6 comparable products
-        elements = self.browser.find_elements_by_id("search_results")
-        assert len(elements) > 0
+        self.browser.find_elements_by_class_name("card-img-top")
         # LK saves a product
         self.browser.find_element_by_id('record-product-01234567891011').click()
         # Then LK checks the favorites by clicking on a carrot logo
@@ -129,8 +128,7 @@ class CustomerTestCase(LiveServerTestCase):
         # Then she sees the details of the product
         # And closes the window to get back to her favorites
         self.browser.find_element_by_id("back_to_favorites").click()
-        elements = self.browser.find_elements_by_id("favorites_list")
-        assert len(elements) > 0
+        self.browser.find_element_by_class_name("img-in-card")
         #print(self.browser.page_source)
 
         

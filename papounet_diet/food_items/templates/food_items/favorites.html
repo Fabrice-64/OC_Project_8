@@ -3,20 +3,29 @@
 
 {% block content %}
 
-<h3>Voici vos Favoris : </h3>
-<ul id = "favorites_list">
-    {% for favorite in favorites %}
-    <div class="card" style="width: 18rem;">
-        <a href="{% url 'food_items:favorite_details' favorite.code %}" id="{{favorite.code}}">
-            <img class="card-img-top" src='{{ favorite.image_url }}'
-                id="{{favorite.code}}" alt="Image Produit">
-        </a>
-        <div class="card-body">
-            <h5>{{ favorite.name }}, 
-            Nutriscore: {{ favorite.nutrition_score }}
-        </div>
+<h3 class="favorites-list">
+    <p class="text-center" id="announce_results">Voici vos favoris :</p>
+</h3>
+<div class="container" style="background-color: lightcyan;">
+    <div class="row align-items-start">
+        {% for favorite in favorites %}
+            <div class="col-md-4 col-6">
+                <div class="card-deck">
+                    <div class="card-img-top">
+                        <a href="{% url 'food_items:favorite_details' favorite.code %}" id="{{favorite.code}}">
+                            <img class="img-in-card" src='{{ favorite.image_url }}'
+                                id="{{favorite.code}}" alt="Image Produit">
+                        </a>
+                        <div class="nutrition-circle float-right">{{favorite.nutrition_score}}</div>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ favorite.name }}</p>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <h2 id="error_message">Vous n'avez pas enregistré de favori !</h2>
+        {% endfor %}
     </div>
-    {% empty %}
-    <li><h2 id="error_message">Désolé, nous n'avons pas de résultat correspondant</h2></li>
-    {% endfor %}
+</div>
 {% endblock %}

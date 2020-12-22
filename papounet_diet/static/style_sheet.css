@@ -14,15 +14,19 @@
     border: 1px solid green;
   padding: 3px;
 }
+.card-deck{
+    margin: 3px;
+    border-style: inset;
+}
 .card-img{
     opacity: 0.3;
 }
 #centered-box{
-    justify-content: center;
-    display: inline-flex;
+    text-align: center;
 }
 .card-img-top{
     text-align: center;
+    position: relative;
 
 }
 .nutrition-circle {

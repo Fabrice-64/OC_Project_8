@@ -20,12 +20,12 @@
     <h3 class="search_results">
         <p class="text-center" id="announce_results">Voici les résultats :</p>
     </h3>
-    <div class="container">
+    <div class="container" style="background-color: lightcyan;">
         <div class="row align-items-start">
         {% for result in search_results %}
         
             <div class="col-md-4 col-6">
-                <div class="card-deck bg-light m-3">
+                <div class="card-deck">
                     <div class="card-img-top">
                         <a href="{% url 'food_items:product_details' result.code %}" id="{{result.code}}">
                                 <img class="img-in-card" src='{{ result.image_url }}'
