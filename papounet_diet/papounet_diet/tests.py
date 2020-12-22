@@ -1,12 +1,11 @@
-from django.test import LiveServerTestCase, TestCase
+from django.test import LiveServerTestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 
 
 class CustomerTestCase(LiveServerTestCase):
     fixtures = ['product', 'store', 'user']
-    
-    
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -90,7 +89,6 @@ class CustomerTestCase(LiveServerTestCase):
         self.browser.find_element_by_class_name('card-deck')
         self.browser.find_element_by_class_name('list-group')
 
-
     def test_log_in_then_search_for_product_and_record_it(self):
         self.browser.get('%s%s' % (self.live_server_url, ''))
         # As a registered member/customer LK clicks on login icon
@@ -120,7 +118,8 @@ class CustomerTestCase(LiveServerTestCase):
         # Then a list of max 6 comparable products
         self.browser.find_elements_by_class_name("card-img-top")
         # LK saves a product
-        self.browser.find_element_by_id('record-product-01234567891011').click()
+        self.browser.find_element_by_id(
+            'record-product-01234567891011').click()
         # Then LK checks the favorites by clicking on a carrot logo
         self.browser.find_element_by_id('carrot').click()
         # She wants the details of a product and clicks on it
@@ -129,6 +128,4 @@ class CustomerTestCase(LiveServerTestCase):
         # And closes the window to get back to her favorites
         self.browser.find_element_by_id("back_to_favorites").click()
         self.browser.find_element_by_class_name("img-in-card")
-        #print(self.browser.page_source)
-
-        
+        # print(self.browser.page_source)

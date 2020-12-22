@@ -1,6 +1,7 @@
 
 import os
 
+
 class OpenFoodFactsParams:
 
     URL = 'https://fr.openfoodfacts.org/cgi/search.pl?'

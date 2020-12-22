@@ -26,12 +26,12 @@ class ProcessCategory(DataCleaning, OpenFoodFactsParams, UploadQueries):
 
     def _upload_categories(self, categories):
         self.query_upload_categories(categories)
-    
+
     def category_full_process(self):
         self.categories = self._download_categories()
-        self.categories = self.from_data_to_list(self.categories, "tags", "name")
+        self.categories = self.from_data_to_list(self.categories,
+                                                 "tags", "name")
         self._upload_categories(self.categories)
-        
 
 
 class ProcessProduct(DataCleaning, OpenFoodFactsParams, UploadQueries):
@@ -39,7 +39,7 @@ class ProcessProduct(DataCleaning, OpenFoodFactsParams, UploadQueries):
         self.payload.update({"tag_0": category})
         self.payload.update({"page": page_number})
         return self.payload
-    
+
     def _download_products(self):
         r = requests.get(self.URL, headers=self.HEADERS, params=self.payload)
         self.product_data = r.json()
@@ -49,18 +49,19 @@ class ProcessProduct(DataCleaning, OpenFoodFactsParams, UploadQueries):
         products_list = list()
         for product in product_data["products"]:
             if product.get('nutrition_grade_fr') is not None\
-                and product.get('stores') is not None:
+                            and product.get('stores') is not None:
                 brand = product.get('brands')
                 name = product.get('product_name')
                 code = product.get('code')
                 nutrition_score = product.get('nutrition_grade_fr')
                 stores = self.from_string_into_list(product.get('stores'))
-                categories = self.from_string_into_list(product.get('categories'))
+                categories = self.from_string_into_list(
+                                    product.get('categories'))
                 image_url = self.assign_url(product.get('image_url'))
                 last_modified = product.get('last_modified_t')
                 products_list.append((brand, name, code, nutrition_score,
-                                    stores, categories, image_url, last_modified, 
-                                    ))
+                                      stores, categories, image_url,
+                                      last_modified))
         return products_list
 
     def _product_full_process(self, category, page_number):

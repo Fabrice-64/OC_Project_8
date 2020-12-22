@@ -1,6 +1,7 @@
 from food_items.models import Product, Store, Category
 from datetime import datetime, timezone
 
+
 class UploadQueries():
     def query_upload_stores(self, store_list):
         store_list = [Store(name=store) for store in store_list]
@@ -11,11 +12,14 @@ class UploadQueries():
         Category.objects.bulk_create(category_list)
 
     def _add_products_to_db(self, product_list):
-        products_to_upload = [(Product(code=item[2], brand=item[0], name=item[1],
-            last_modified=datetime.fromtimestamp(int(item[7]), timezone.utc),
-            nutrition_score=item[3], image_url=item[6])) for item in product_list]
+        products_to_upload = [(Product(code=item[2], brand=item[0],
+                               name=item[1],
+                               last_modified=datetime.fromtimestamp(
+                                   int(item[7]), timezone.utc),
+                               nutrition_score=item[3],
+                               image_url=item[6])) for item in product_list]
         Product.objects.bulk_create(products_to_upload)
-    
+
     def _add_stores_categories_to_product(self, product_list):
         for item in product_list:
             store_list = list()
@@ -41,23 +45,15 @@ class UploadQueries():
 
     def query_count_products(self):
         return Product.objects.count()
-        
-        
+
+
 class DeleteQueries:
 
     def query_delete_all_categories(self):
         Category.objects.all().delete()
-    
+
     def query_delete_all_stores(self):
         Store.objects.all().delete()
 
     def query_delete_all_products(self):
         Product.objects.all().delete()
-
-    
-    
-
-           
-
-
-                

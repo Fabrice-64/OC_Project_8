@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Store, Product, Category
 # Register your models here.
 
+
 @admin.register(Store)
 class AdminStore(admin.ModelAdmin):
     list_display = ('name',)
@@ -14,6 +15,7 @@ class AdminCategory(admin.ModelAdmin):
     ordering = ('name',)
 
     actions = ['download_products']
+
     def download_products(self, request, queryset):
         pass
     download_products.short_description = "Populate the DB with Products"
@@ -23,7 +25,3 @@ class AdminCategory(admin.ModelAdmin):
 class AdminProduct(admin.ModelAdmin):
     list_display = ('name', 'brand', 'code', 'nutrition_score')
     ordered = ('name',)
-    
-    
-
-

@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm, UserRegistrationForm
 
@@ -18,14 +17,21 @@ def user_login(request):
                     return render(request, "customer/home.html")
                 else:
                     info = "Votre compte est désactivé"
-                    return render(request, "customer/failed_login.html", {'info': info, 'next_step': "create_account"})
+                    return render(request,
+                                  "customer/failed_login.html",
+                                   {
+                                    'info': info,
+                                    'next_step': "create_account"})
             else:
                 info = "Vos identifiants sont incorrects"
-                return render(request, "customer/failed_login.html", {'info': info, 'next_step': "log_in_again"})
+                return render(request,
+                              "customer/failed_login.html",
+                              {'info': info, 'next_step': "log_in_again"})
     else:
         form = LoginForm()
 
     return render(request, "customer/login.html", {'form': form})
+
 
 def user_logout(request):
     logout(request)
@@ -34,6 +40,7 @@ def user_logout(request):
 
 def home(request):
     return render(request, "customer/home.html")
+
 
 def register(request):
     if request.method == "POST":
@@ -48,11 +55,14 @@ def register(request):
 
     return render(request, "customer/register.html", {'user_form': user_form})
 
+
 def personal_infos(request):
     return render(request, "customer/personal_infos.html")
 
+
 def terms_of_use(request):
-    return render(request,"customer/terms_of_use.html")
+    return render(request, "customer/terms_of_use.html")
+
 
 def contact(request):
-    return render(request,"customer/contact.html")
+    return render(request, "customer/contact.html")

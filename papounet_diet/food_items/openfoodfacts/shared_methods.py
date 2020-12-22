@@ -4,7 +4,6 @@ class ConnectToOFF:
     pass
 
 
-
 class DataCleaning():
 
     def _check_special_characters(self, value):
@@ -46,7 +45,7 @@ class DataCleaning():
             data = string_to_convert.split(",")
             data = [item.strip() for item in data]
         else:
-            data=[""]
+            data = [""]
         return data
 
     def assign_url(self, url_to_assign):
@@ -55,5 +54,3 @@ class DataCleaning():
         else:
             assigned_url = url_to_assign
         return assigned_url
-        
-

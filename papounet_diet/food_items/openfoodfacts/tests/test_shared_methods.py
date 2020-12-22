@@ -1,7 +1,6 @@
 from food_items.openfoodfacts.shared_methods import DataCleaning
 from django.test import TestCase
-import os, sys
-import pathlib
+import os
 import json
 
 
@@ -21,7 +20,9 @@ class TestDataCleaning(TestCase, DataCleaning):
 
     def test_from_data_to_list(self):
         current_path = os.path.abspath(os.getcwd())
-        with open(os.path.join(current_path, "food_items/openfoodfacts/tests/off_data_to_be_tested/mock_stores.json"), 'r') as f:
+        with open(os.path.join(current_path,
+            "food_items/openfoodfacts/tests/off_data_to_be_tested/mock_stores.json"),
+             'r') as f:
             data = json.load(f)
         key_file = "tags"
         key_item = "name"
@@ -32,9 +33,11 @@ class TestDataCleaning(TestCase, DataCleaning):
     def test_assign_url(self):
         values = ["", "null", "https://test_url.com"]
         test_url = self.assign_url(values[0])
-        self.assertEqual(test_url, "https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png")
+        self.assertEqual(test_url,
+        "https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png")
         test_url = self.assign_url(values[1])
-        self.assertEqual(test_url, "https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png")
+        self.assertEqual(test_url,
+        "https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en-178x150.png")
         test_url = self.assign_url(values[2])
         self.assertEqual(test_url, "https://test_url.com")
 
