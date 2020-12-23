@@ -1,3 +1,33 @@
+"""
+    This module tests the step-by-step processing of the data from the download
+    from Open Food Facts to the upload in the database.
+    Tests are arranged in accordance with the type of data:
+    Stores, Categories, Products.
+
+    Classes:
+        TestConnectionOFF: tests the effective connection with Open Food Facts:
+        we should get a 200 OK response type. No data is downloaded.
+
+        TestProcessStore: organized in two steps : effective data download and
+        processing of a mock dataset for test purposes.
+
+        TestProcessCategory: built on the same principles than the stores
+
+        TestUploadProduct: checks that a product is correctly processed to
+        be added to the DB, including its relation to the join tables.
+
+        TestProcessProduct: test the full process of a product:
+        - construction of the download request,
+        - data processing,
+        - upload in a test DB.
+
+    Exceptions:
+        NIL
+
+    Functions:
+        NIL
+"""
+
 import requests
 from django.test import TestCase
 from food_items.tests import fixture as f

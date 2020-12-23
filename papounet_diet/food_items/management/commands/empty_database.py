@@ -1,3 +1,18 @@
+"""
+    This short module empties the products, stores and categories
+    from the database.
+    It doesn't affect the users' accounts.
+
+    Classes:
+        Command: please refer to Django official documentation for detailed.
+        explanation.
+
+    Exceptions:
+        NIL
+
+    Functions:
+        NIL
+"""
 from django.core.management.base import BaseCommand
 from food_items.openfoodfacts.queries import DeleteQueries
 

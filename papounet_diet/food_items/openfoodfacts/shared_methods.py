@@ -1,9 +1,5 @@
 
 
-class ConnectToOFF:
-    pass
-
-
 class DataCleaning():
 
     def _check_special_characters(self, value):

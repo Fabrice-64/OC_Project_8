@@ -1,3 +1,10 @@
+"""
+    Data from Open Food Facts need to be cleaned up before being inserted
+    into the DB. This module is testing this process.
+
+    Please refer to the module shared_methods.py for a detailed explanation.
+"""
+
 from food_items.openfoodfacts.shared_methods import DataCleaning
 from django.test import TestCase
 import os
@@ -17,12 +24,12 @@ class TestDataCleaning(TestCase, DataCleaning):
         self.assertIsNotNone(result)
         self.assertEqual(test_list, ["NaN", "le magasin", "l\'autre magasin"])
 
-
     def test_from_data_to_list(self):
         current_path = os.path.abspath(os.getcwd())
         with open(os.path.join(current_path,
-            "food_items/openfoodfacts/tests/off_data_to_be_tested/mock_stores.json"),
-             'r') as f:
+                  "food_items/openfoodfacts/tests/off_data_to_be_tested/\
+                  mock_stores.json"),
+                  'r') as f:
             data = json.load(f)
         key_file = "tags"
         key_item = "name"

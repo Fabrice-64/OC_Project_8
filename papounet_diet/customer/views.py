@@ -3,6 +3,8 @@
     The common HTML Code to all apps. is managed from here as well.
     Therefore, if the different apps were to be split, don't forget to transfer
     the relevant code.
+    User login, logout and register functions strictly follow Django user's guide.
+    Therefore, you can refer to the official documentation !
 
     Classes:
         NIL
@@ -11,7 +13,6 @@
         NIL
 
     Functions:
-        They 
         user_login
 
         user_logout

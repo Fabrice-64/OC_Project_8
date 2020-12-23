@@ -1,3 +1,17 @@
+"""
+    This short module aims at filling the database for a first use.
+
+    Classes:
+        Command: please refer to Django official documentation for detailed.
+        explanation.
+
+    Exception:
+        NIL
+
+    Functions:
+        NIL
+"""
+
 from django.core.management.base import BaseCommand
 from food_items.openfoodfacts.off_data_process import ProcessStore,\
                                                       ProcessCategory,\

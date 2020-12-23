@@ -1,17 +1,35 @@
+"""
+    This module aims at processing larger sets of data for use in some of the tests.
+
+    Classes:
+        MockDataOff: class containing the data sets converted in JSON format.
+        
+        MockProducts: small class of products for unitary tests
+
+    Exceptions:
+        NIL
+
+    Functions:
+        get_mock_data: converts data sets into JSON format for further processing.
+
+"""
+
 import os
 import json
 
-
-
 current_path = os.path.abspath(os.getcwd())
+
+
 def get_mock_data(mock_data):
-    with open(os.path.join(current_path, "food_items/openfoodfacts/tests/off_data_to_be_tested/", mock_data), 'r') as f:
+    with open(os.path.join(current_path,
+              "food_items/openfoodfacts/tests/off_data_to_be_tested/",
+                           mock_data), 'r') as f:
         mock_data = json.load(f)
     return mock_data
 
 
 class MockDataOFF:
-    
+
     store_data = get_mock_data("mock_stores.json")
 
     category_data = get_mock_data("mock_categories.json")
@@ -26,7 +44,7 @@ class MockDataOFF:
           "page_size": 1000, 'page': 1
            }
 
-    
+
 class MockProducts:
     mock_product_list = [
         ('Bjorg',
