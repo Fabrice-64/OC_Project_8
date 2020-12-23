@@ -1,7 +1,19 @@
+"""
+    This module contains the test queries user by a normal user of the website,
+    in the management of his product search and recording.
+    Each of them checks that the operation was duly processed with a mock DB.
+
+    Classes:
+        QueriesTest
+
+    Exceptions:
+        NIL
+"""
+
 from food_items import queries as q
 from . import fixture as f
 from django.test import TestCase
-from food_items.models import Product, BestProductSelection, Store, Category
+from food_items.models import Product, BestProductSelection
 
 from django.contrib.auth.models import User
 

@@ -1,9 +1,7 @@
-from .models import Product, BestProductSelection
+
 from django.core.cache import cache
 from django.shortcuts import render, redirect, reverse
 from django.utils.datastructures import MultiValueDictKeyError
-from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
 from food_items import queries as q
 
 
@@ -20,6 +18,15 @@ def favorite_details(request, product_code):
 
 
 def search_results(request):
+    """
+        Implements a cache memory to retrieve the searched producs after
+        having looked at the details of a product.
+        The cache is located in the Database.
+
+        Exception:
+            MultiKeyValueError: shows up in Django when a template
+            which requires the result of a query doesn't get it.
+    """
     try:
         searched_item = request.GET['searched_item']
         results = q.query_search_results(searched_item)

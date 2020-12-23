@@ -27,8 +27,7 @@ class TestDataCleaning(TestCase, DataCleaning):
     def test_from_data_to_list(self):
         current_path = os.path.abspath(os.getcwd())
         with open(os.path.join(current_path,
-                  "food_items/openfoodfacts/tests/off_data_to_be_tested/\
-                  mock_stores.json"),
+                  "food_items/openfoodfacts/tests/off_data_to_be_tested/mock_stores.json"),
                   'r') as f:
             data = json.load(f)
         key_file = "tags"

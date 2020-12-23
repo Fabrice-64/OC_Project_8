@@ -1,9 +1,13 @@
-from django.test import Client, TestCase, RequestFactory
-from food_items.models import Product, Store
+"""
+    These tests are for the views in food_items.
+    RequestFactory has been selected in order to generate
+    a request and check the transfer of data between the views
+    and the templates.
+"""
+
+from django.test import TestCase, RequestFactory
 from django.contrib.auth.models import User
 from . import fixture as f
-from django.shortcuts import reverse
-from food_items import queries as q
 from food_items import views as v
 
 

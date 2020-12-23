@@ -1,3 +1,8 @@
+"""
+    Personalize the site administration in a low extend.
+    Can be further developped
+
+"""
 from django.contrib import admin
 from .models import Store, Product, Category
 # Register your models here.
@@ -17,6 +22,10 @@ class AdminCategory(admin.ModelAdmin):
     actions = ['download_products']
 
     def download_products(self, request, queryset):
+        """
+            non active method: cal be developed later on to further
+            populate the DB.
+        """
         pass
     download_products.short_description = "Populate the DB with Products"
 

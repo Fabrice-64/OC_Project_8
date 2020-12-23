@@ -1,3 +1,16 @@
+"""
+    This is were the user stories are to be tested !
+
+    Are tested:
+        The User story where the persona wants to look for a product
+                without logging in.
+        A full story from login to the record of a product.
+
+    To be noticed:
+        By removing the carret at last line, the current html code
+            will be displayed: very convenient for debugging.
+
+"""
 from django.test import LiveServerTestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -19,8 +32,10 @@ class CustomerTestCase(LiveServerTestCase):
 
     def test_quickly_get_product_from_home_page(self):
         """
-        Test the User story where the persona wants to look for a product
-        without logging in
+            Test the User story where the persona wants to look for a product
+            without logging in.
+            By removing the carret at last line, the current html code
+            will be displayed: very convenient for debugging.
         """
         self.browser.get('%s%s' % (self.live_server_url, ''))
         self.browser.find_element_by_id("favicon")
@@ -88,8 +103,14 @@ class CustomerTestCase(LiveServerTestCase):
         WebDriverWait(self.browser, 2)
         self.browser.find_element_by_class_name('card-deck')
         self.browser.find_element_by_class_name('list-group')
+        # print(self.browser.page_source)
 
     def test_log_in_then_search_for_product_and_record_it(self):
+        """
+            Test a full story from login to the record of a product.
+            By removing the carret at last line, the current html code
+            will be displayed: very convenient for debugging.
+        """
         self.browser.get('%s%s' % (self.live_server_url, ''))
         # As a registered member/customer LK clicks on login icon
         self.browser.find_element_by_id("login").click()
