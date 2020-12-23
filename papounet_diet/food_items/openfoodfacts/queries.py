@@ -1,3 +1,19 @@
+"""
+    Manage database changes, like upload and delete.
+    It is specifically designed with Django ORM syntax.
+
+    Classes:
+        UploadQueries
+
+        DeleteQueries
+
+    Exceptions:
+        NIL
+
+    Functions:
+        NIL
+"""
+
 from food_items.models import Product, Store, Category
 from datetime import datetime, timezone
 
@@ -21,6 +37,17 @@ class UploadQueries():
         Product.objects.bulk_create(products_to_upload)
 
     def _add_stores_categories_to_product(self, product_list):
+        """
+            As stores and categories are linked to products through
+            join tables, their relation is established here.
+
+            Arguments:
+                product_list: to be noticed, Stores and Categories
+                have already been converted into a list.
+
+            Returns:
+                None.
+        """
         for item in product_list:
             store_list = list()
             product = Product.objects.get(code=item[2])
