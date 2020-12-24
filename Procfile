@@ -1,1 +1,1 @@
-web: gunicorn papounet_diet:app
+web: gunicorn papounet_diet.wsgi
