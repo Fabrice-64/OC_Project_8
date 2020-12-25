@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "venv/bin/python",
+    "python.pythonPath": "/Users/fabricejaouen/DepotLocalGIT/papounet_diet/venv/bin/python3.9",
     "python.formatting.provider": "autopep8"
 }
