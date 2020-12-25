@@ -4,7 +4,7 @@
 
 """
 from django.contrib import admin
-from .models import Store, Product, Category
+from .models import Store, Product, Category, BestProductSelection
 # Register your models here.
 
 
@@ -34,3 +34,8 @@ class AdminCategory(admin.ModelAdmin):
 class AdminProduct(admin.ModelAdmin):
     list_display = ('name', 'brand', 'code', 'nutrition_score')
     ordered = ('name',)
+
+
+@admin.register(BestProductSelection)
+class AdminBestProductSelection(admin.ModelAdmin):
+    list_display = ('code', 'date_selection')

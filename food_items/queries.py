@@ -16,8 +16,7 @@ def query_record_best_product(product_to_record, user):
 
 
 def query_fetch_favorites(user):
-    favorites = Product.objects.filter(
-                selection__username="user").distinct("code")[:6]
+    favorites = BestProductSelection.objects.all()
     return favorites
 
 
